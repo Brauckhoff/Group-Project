@@ -2,7 +2,8 @@
 
 Reproduce analysis of the paper and compare to original paper.
 
-# To Do's
+
+# Initial notes
 
 - Comparison of 3 state-of-the-art assemblers:
 - [ ] metaMDBG
@@ -17,6 +18,53 @@ Reproduce analysis of the paper and compare to original paper.
 - [Zymo-HiFi mock reference genomes](https://s3.amazonaws.com/zymo-files/BioPool/D6331.refseq.zip) https://s3.amazonaws.com/zymo-files/BioPool/D6331.refseq.zip. 
 - [ATCC mock reference genomes](https://www.atcc.org/products/msa-1003)
 
+
+- [ ] Report 4-8 Pages
+
+
+# Questions
+
+- should we perform all analysis (some take > 30 days)?
+- only analyze PacBio or also OxfordNanopore?
+- repeat whole benchmark or only analysis with metaMDBG?
+- task: apply metaMDBG to all 5 data sets, check if we get same result?
+-
+
+
+# Timeline (in weeks)
+
+**17th nov**
+- [ ] get access to the cluster (server)!
+- [ ] in case of benchmark: implement thing that takes 40 days
+
+**24th nov**
+- [ ] lay low and learn :)
+
+**01st dec**
+- [ ] code should be good to go for server
+
+**08th dec**
+- [ ] do analyses and debug
+
+**15th dec**
+- [ ] post processing and analysis
+
+**22th dec**
+- [ ] continue analysis
+
+**29th dec**
+- [ ] be ready to visualize
+
+**05th jan**
+- [ ] finish practical tasks
+
+**12th jan**
+- [ ] write report
+- [ ] prepare presentation
+
+**19th jan**
+- [ ] finish report
+- [ ] finish presentation
 
 
 # Sources
