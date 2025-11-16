@@ -4,9 +4,9 @@ Reproduce analysis of the paper and compare to original paper.
 
 # To Do's
 
-- Comparison of 3 state-of-the-art assemblers:\
-- [ ] metaMDBG\
-- [ ] metaFlye (v.2.9-b1768)\
+- Comparison of 3 state-of-the-art assemblers:
+- [ ] metaMDBG
+- [ ] metaFlye (v.2.9-b1768)
 - [ ] hifiasm-meta (v.0.2-r058)
 - used two mock communities and three samples\
 (File: data/41587_2023_1983_MOESM2_ESM.xlsx\
