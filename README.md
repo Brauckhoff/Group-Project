@@ -14,6 +14,8 @@ Reproduce analysis of the paper and compare to original paper.
  see commands: TableS2\
  see results: Table S3)
 - all data sets used in this study were downloaded from the [NCBI Sequence Read Archive](https://www.ncbi.nlm.nih.gov/); accession numbers are given in Supplementary Table S1.
+- [Zymo-HiFi mock reference genomes](https://s3.amazonaws.com/zymo-files/BioPool/D6331.refseq.zip) https://s3.amazonaws.com/zymo-files/BioPool/D6331.refseq.zip. 
+- [ATCC mock reference genomes](https://www.atcc.org/products/msa-1003)
 
 
 
