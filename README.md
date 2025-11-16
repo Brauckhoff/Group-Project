@@ -31,7 +31,7 @@ Reproduce analysis of the paper and compare to original paper.
 
 # Timeline (in weeks)
 
-**17th nov**: \
+**17th nov**
 - [ ] get access to the cluster (server)!
 - [ ] in case of benchmark: implement thing that takes 40 days
 
@@ -45,7 +45,7 @@ Reproduce analysis of the paper and compare to original paper.
 - [ ] do analyses and debug
 
 **15th dec**
-- [] post processing and analysis
+- [ ] post processing and analysis
 
 **22th dec**
 - [ ] continue analysis
