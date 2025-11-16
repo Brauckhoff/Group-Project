@@ -4,11 +4,11 @@ Reproduce analysis of the paper and compare to original paper.
 
 # To Do's
 
-- Comparison of 3 state-of-the-art assemblers:
-[ ] metaMDBG
-[ ] metaFlye (v.2.9-b1768)
-[ ] hifiasm-meta (v.0.2-r058)
-- used two mock communities and three samples
+- Comparison of 3 state-of-the-art assemblers:\
+- [ ] metaMDBG\
+- [ ] metaFlye (v.2.9-b1768)\
+- [ ] hifiasm-meta (v.0.2-r058)
+- used two mock communities and three samples\
 (File: data/41587_2023_1983_MOESM2_ESM.xlsx\
  see overview: TableS1\
  see commands: TableS2\
@@ -42,7 +42,7 @@ Paper - https://doi.org/10.1038/s41587-023-01983-6
 - R package Castor v1.7.3
 - R package ggtree v2.4.1
 - R package treeio v1.14.3
-- R package ggtreeExtra v1.0.2
+- R package ggtreeExtra v1.0.2\
 costum Scripts:
 - https://github.com/GaetanBenoitDev/metaMDBG
 - https://github.com/GaetanBenoitDev/MetaMDBG_Manuscript
