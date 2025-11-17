@@ -5,10 +5,11 @@ Reproduce analysis of the paper and compare to original paper.
 
 # Initial notes
 
+- [x] timeplan can be adapted but initial thing is approved
 - Comparison of 3 state-of-the-art assemblers:
 - [ ] metaMDBG
-- [ ] metaFlye (v.2.9-b1768)
-- [ ] hifiasm-meta (v.0.2-r058)
+- [ ] ~~metaFlye (v.2.9-b1768)~~
+- [ ] ~~hifiasm-meta (v.0.2-r058)~~
 - used two mock communities and three samples\
 (File: data/41587_2023_1983_MOESM2_ESM.xlsx\
  see overview: TableS1\
@@ -24,11 +25,12 @@ Reproduce analysis of the paper and compare to original paper.
 
 # Questions
 
-- should we perform all analysis (some take > 30 days)?
-- only analyze PacBio or also OxfordNanopore?
-- repeat whole benchmark or only analysis with metaMDBG?
-- task: apply metaMDBG to all 5 data sets, check if we get same result?
--
+- should we perform all analysis (some take > 30 days)? // repeat whole benchmark or only analysis with metaMDBG?\
+*Answer* - no metaMDBG is fine
+- only analyze PacBio or also OxfordNanopore?\
+*Answer* - start with PacBio and if time left do ONT
+- task: apply metaMDBG to all 5 data sets, check if we get same result?\
+*Answer* - yes we do that :), but start small with 2-3 datasets if time continue
 
 
 # Timeline (in weeks)
@@ -44,6 +46,7 @@ Reproduce analysis of the paper and compare to original paper.
 - [ ] code should be good to go for server
 
 **08th dec**
+- [ ] NEXT MEETING :)
 - [ ] do analyses and debug
 
 **15th dec**
