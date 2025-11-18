@@ -2,6 +2,32 @@
 
 Reproduce analysis of the paper and compare to original paper.
 
+# Guide
+
+First we need the data and the tool. *Tool* - [metaMDBG](https://github.com/GaetanBenoitDev/metaMDBG)
+
+## Data
+
+Lets focus on PacBio and if we get bored then add some OxfordNanopore...\
+I would focus on the larger samples but mock is also an option - *to discuss*
+
+| Sample    | Accessions  | Estimated time |
+| --------- | ----------- | -------------- |
+| mock?     | SRR11606871 | ?              |
+| mock?     | SRR13128014 | ?              |
+| [human gut](https://downloads.pacbcloud.com/public/dataset/Sequel-IIe-202104/metagenomics/) | SRR15275213 | 7h   |
+|           | SRR15275212 | 7h           |
+|           | SRR15275211 | 6h           |
+|           | SRR15275210 | 6h           |
+|           | *co-assembly* | 36h        |
+| [AD-HiFi](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SAMEA8949998&o=acc_s%3Aa&s=ERR10905741)   | ERR10905741 | 12h        |
+|           | ERR10905742 | 13h        |
+|           | ERR10905743 | 13h        |
+|           | *co-assembly* | 77h      |
+| Sheep rumen | SRR14289618 | 108h     |
+
+Here is a tutorial for the [download](https://bioinformaticsworkbook.org/dataAcquisition/fileTransfer/sra.html#gsc.tab=0)...
+
 
 # Initial notes
 
@@ -25,6 +51,7 @@ Reproduce analysis of the paper and compare to original paper.
 
 # Questions
 
+*17th Nov*:
 - should we perform all analysis (some take > 30 days)? // repeat whole benchmark or only analysis with metaMDBG?\
 *Answer* - no metaMDBG is fine
 - only analyze PacBio or also OxfordNanopore?\
@@ -32,17 +59,19 @@ Reproduce analysis of the paper and compare to original paper.
 - task: apply metaMDBG to all 5 data sets, check if we get same result?\
 *Answer* - yes we do that :), but start small with 2-3 datasets if time continue
 
+*08th Dec*:
 
 # Timeline (in weeks)
 
 **17th nov**
 - [ ] get access to the cluster (server)!
-- [ ] in case of benchmark: implement thing that takes 40 days
 
 **24th nov**
 - [ ] lay low and learn :)
 
 **01st dec**
+- [ ] get tool installed on server
+- [ ] get data
 - [ ] code should be good to go for server
 
 **08th dec**
