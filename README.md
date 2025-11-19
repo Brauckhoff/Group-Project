@@ -26,7 +26,8 @@ I would focus on the larger samples but mock is also an option - *to discuss*
 |           | *co-assembly* | 77h      |
 | Sheep rumen | SRR14289618 | 108h     |
 
-Here is a tutorial for the [download](https://bioinformaticsworkbook.org/dataAcquisition/fileTransfer/sra.html#gsc.tab=0)...
+Here is a tutorial for the [download](https://erilu.github.io/python-fastq-downloader/)... also with possible python integration :D
+> we need fastq.gz file format 
 
 
 # Initial notes
