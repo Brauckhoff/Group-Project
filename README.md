@@ -29,6 +29,9 @@ I would focus on the larger samples but mock is also an option - *to discuss*
 Here is a tutorial for the [download](https://erilu.github.io/python-fastq-downloader/)... also with possible python integration :D
 > we need fastq.gz file format 
 
+Downloaded sra-toolkit and created a script to download SRR codes like described under the 'download'-link. Can be found in the data folder. Usage:\
+`python3 fetch_sra.py <SRR-ID1> <SRR-ID2> <...>`
+
 
 # Initial notes
 
@@ -72,6 +75,7 @@ Here is a tutorial for the [download](https://erilu.github.io/python-fastq-downl
 
 **01st dec**
 - [ ] get tool installed on server
+- [x] script for data download
 - [ ] get data
 - [ ] code should be good to go for server
 
