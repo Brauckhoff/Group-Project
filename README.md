@@ -65,7 +65,7 @@ Here is a tutorial for the [download](https://erilu.github.io/python-fastq-downl
 # Timeline (in weeks)
 
 **17th nov**
-- [ ] get access to the cluster (server)!
+- [x] get access to the cluster (server)!
 
 **24th nov**
 - [ ] lay low and learn :)
