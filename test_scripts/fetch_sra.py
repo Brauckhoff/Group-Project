@@ -20,7 +20,7 @@ def get_sra(*args):
 
         # this will extract the .sra files from above into a folder named 'fastq'
         print("Generating fastq for: " + arg)
-        fastq_dump = "fastq-dump --outdir fastq --gzip --skip-technical  --readids --read-filter pass --dumpbase --split-3 --clip ./" + arg + "/" + arg + ".sra"
+        fastq_dump = "fastq-dump --outdir fastq --gzip ./" + arg + "/" + arg + ".sra"
         print("The command used was: " + fastq_dump)
         subprocess.call(fastq_dump, shell=True)
 
