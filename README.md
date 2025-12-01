@@ -4,8 +4,6 @@ Reproduce analysis of the paper and compare to original paper.
 
 # Guide
 
-First we need the data and the tool. *Tool* - [metaMDBG](https://github.com/GaetanBenoitDev/metaMDBG)
-
 ## Data
 
 Lets focus on PacBio and if we get bored then add some OxfordNanopore...\
@@ -13,8 +11,8 @@ I would focus on the larger samples but mock is also an option - *to discuss*
 
 | Sample    | Accessions  | Estimated time |
 | --------- | ----------- | -------------- |
-| mock?     | SRR11606871 | ?              |
-| mock?     | SRR13128014 | ?              |
+| [Zymo](https://s3.amazonaws.com/zymo-files/BioPool/D6331.refseq.zip)?     | SRR13128014 | ?              |
+| [ATCC](https://www.atcc.org/products/msa-1003)?     | SRR11606871 | ?              |
 | [human gut](https://downloads.pacbcloud.com/public/dataset/Sequel-IIe-202104/metagenomics/) | SRR15275213 | 7h   |
 |           | SRR15275212 | 7h           |
 |           | SRR15275211 | 6h           |
@@ -29,28 +27,28 @@ I would focus on the larger samples but mock is also an option - *to discuss*
 Here is a tutorial for the [download](https://erilu.github.io/python-fastq-downloader/)... also with possible python integration :D
 > we need fastq.gz file format 
 
-Downloaded sra-toolkit and created a script to download SRR codes like described under the 'download'-link. Can be found in the data folder. Usage:\
-`python3 fetch_sra.py <SRR-ID1> <SRR-ID2> <...>`
+Downloaded sra-toolkit and created a script to download SRR codes like described under the 'download'-link (Removed all additional options). Can be found in the data folder. Usage:\
+`python3 fetch_sra_multi.py <SRR-ID1> <SRR-ID2> <...>`
+> download is currently running for all mentioned accession numbers (started 01.dec 18:00)
+> will be in shared folder in the next days ready to use
 
 
-# Initial notes
+## Set up environment
 
-- [x] timeplan can be adapted but initial thing is approved
-- Comparison of 3 state-of-the-art assemblers:
-- [ ] metaMDBG
-- [ ] ~~metaFlye (v.2.9-b1768)~~
-- [ ] ~~hifiasm-meta (v.0.2-r058)~~
-- used two mock communities and three samples\
-(File: data/41587_2023_1983_MOESM2_ESM.xlsx\
- see overview: TableS1\
- see commands: TableS2\
- see results: Table S3)
-- all data sets used in this study were downloaded from the [NCBI Sequence Read Archive](https://www.ncbi.nlm.nih.gov/); accession numbers are given in Supplementary Table S1.
-- [Zymo-HiFi mock reference genomes](https://s3.amazonaws.com/zymo-files/BioPool/D6331.refseq.zip)
-- [ATCC mock reference genomes](https://www.atcc.org/products/msa-1003)
+Installation should be done in your directory (root `cd ~`). 
 
+1. miniconda (takes ~30min)
+```
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash ~/Miniconda3-latest-Linux-x86_64.sh
+```
+[miniconda docs](https://www.anaconda.com/docs/getting-started/miniconda/install#macos-linux-installation) \
+[manage env](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
 
-- [ ] Report 4-8 Pages
+2. Tool - [metaMDBG](https://github.com/GaetanBenoitDev/metaMDBG) 
+```
+conda install -c conda-forge -c bioconda metamdbg
+```
 
 
 # Questions
@@ -65,13 +63,14 @@ Downloaded sra-toolkit and created a script to download SRR codes like described
 
 *08th Dec*:
 
+
 # Timeline (in weeks)
 
 **17th nov**
 - [x] get access to the cluster (server)!
 
 **24th nov**
-- [ ] lay low and learn :)
+- [x] lay low and learn :)
 
 **01st dec**
 - [ ] get tool installed on server
@@ -96,7 +95,7 @@ Downloaded sra-toolkit and created a script to download SRR codes like described
 - [ ] finish practical tasks
 
 **12th jan**
-- [ ] write report
+- [ ] write report 4-8 pages
 - [ ] prepare presentation
 
 **19th jan**
