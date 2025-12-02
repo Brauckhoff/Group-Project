@@ -30,7 +30,7 @@ Here is a tutorial for the [download](https://erilu.github.io/python-fastq-downl
 Downloaded sra-toolkit and created a script to download SRR codes like described under the 'download'-link (Removed all additional options). Can be found in the data folder. Usage:\
 `python3 fetch_sra_multi.py <SRR-ID1> <SRR-ID2> <...>`
 > download is currently running for all mentioned accession numbers (started 01.dec 18:00)
-> will be in shared folder in the next days ready to use
+> is in shared folder ready to use
 
 take a look at [screen](https://www.geeksforgeeks.org/linux-unix/screen-command-in-linux-with-examples/) to run things in background
 
@@ -83,7 +83,7 @@ conda install -c conda-forge -c bioconda metamdbg
 **01st dec**
 - [ ] get tool installed on server
 - [x] script for data download
-- [ ] get data
+- [x] get data
 - [ ] code should be good to go for server
 
 **08th dec**
