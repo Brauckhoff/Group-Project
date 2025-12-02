@@ -14,22 +14,22 @@ def get_sra(arg):
 
     # this will download the .sra files to ./arg
     print("Currently downloading: " + arg)
-    prefetch = "prefetch " + arg
+    prefetch = "sra_toolkit/sratoolkit.3.2.1-ubuntu64/bin/prefetch -X 100G " + arg
     print("The command used was: " + prefetch)
     subprocess.call(prefetch, shell=True)
 
     # this will extract the .sra files from above into a folder named 'fastq'
     print("Generating fastq for: " + arg)
-    fastq_dump = "fastq-dump --outdir fastq -e 20 -p --gzip ./" + arg + "/" + arg + ".sra"
+    fastq_dump = "sra_toolkit/sratoolkit.3.2.1-ubuntu64/bin/fastq-dump --outdir fastq --gzip ./" + arg + "/" + arg + ".sra"
     print("The command used was: " + fastq_dump)
     subprocess.call(fastq_dump, shell=True)
 
 def main(sra_ids, n_jobs=4):
     """
     Run get_sra in parallel
-    :param sra_ids:
-    :param n_jobs:
-    :return:
+    :param sra_ids: input SRR-IDs
+    :param n_jobs: number of cpu's
+    :return: Complete message
     """
     with ProcessPoolExecutor(max_workers=n_jobs) as ex:
         tasks = [ex.submit(get_sra, sra) for sra in sra_ids]
@@ -40,4 +40,5 @@ def main(sra_ids, n_jobs=4):
 if __name__ == "__main__":
     # get all arguments after script
     sra_ids = sys.argv[1:]
-    main(sra_ids, n_jobs=8)
+    main(sra_ids, n_jobs=15)
+

@@ -14,16 +14,17 @@ def get_sra(*args):
 
         # this will download the .sra files to ./arg
         print("Currently downloading: " + arg)
-        prefetch = "prefetch " + arg
+        prefetch = "sra_toolkit/sratoolkit.3.2.1-ubuntu64/bin/prefetch -X 100G" + arg
         print("The command used was: " + prefetch)
         subprocess.call(prefetch, shell=True)
 
         # this will extract the .sra files from above into a folder named 'fastq'
         print("Generating fastq for: " + arg)
-        fastq_dump = "fastq-dump --outdir fastq --gzip ./" + arg + "/" + arg + ".sra"
+        fastq_dump = "sra_toolkit/sratoolkit.3.2.1-ubuntu64/bin/fastq-dump --outdir fastq --gzip ./" + arg + "/" + arg + ".sra"
         print("The command used was: " + fastq_dump)
         subprocess.call(fastq_dump, shell=True)
 
 if __name__ == "__main__":
     # get all arguments after script
     get_sra(*sys.argv[1:])
+
