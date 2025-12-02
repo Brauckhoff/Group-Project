@@ -44,7 +44,14 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash ~/Miniconda3-latest-Linux-x86_64.sh
 ```
 [miniconda docs](https://www.anaconda.com/docs/getting-started/miniconda/install#macos-linux-installation) \
-[manage env](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+[manage env](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) \
+
+In case the init is also missing, (no (base) at beginning of line), after restart run:
+```
+source miniconda3/bin/activate
+conda init --all
+source ~/.bashrc 
+```
 
 2. Tool - [metaMDBG](https://github.com/GaetanBenoitDev/metaMDBG) 
 ```
