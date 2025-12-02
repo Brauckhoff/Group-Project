@@ -32,6 +32,7 @@ Downloaded sra-toolkit and created a script to download SRR codes like described
 > download is currently running for all mentioned accession numbers (started 01.dec 18:00)
 > will be in shared folder in the next days ready to use
 
+take a look at [screen](https://www.geeksforgeeks.org/linux-unix/screen-command-in-linux-with-examples/) to run things in background
 
 ## Set up environment
 
