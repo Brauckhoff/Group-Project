@@ -38,13 +38,13 @@ take a look at [screen](https://www.geeksforgeeks.org/linux-unix/screen-command-
 
 Installation should be done in your directory (root `cd ~`). 
 
-1. miniconda (takes ~30min)
+1. **miniconda** (takes ~30min)
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash ~/Miniconda3-latest-Linux-x86_64.sh
 ```
 [miniconda docs](https://www.anaconda.com/docs/getting-started/miniconda/install#macos-linux-installation) \
-[manage env](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) \
+[manage env](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) 
 
 In case the init is also missing, (no (base) at beginning of line), after restart run:
 ```
@@ -53,9 +53,43 @@ conda init --all
 source ~/.bashrc 
 ```
 
-2. Tool - [metaMDBG](https://github.com/GaetanBenoitDev/metaMDBG) 
+2. **Tool** - [metaMDBG](https://github.com/GaetanBenoitDev/metaMDBG) 
 ```
 conda install -c conda-forge -c bioconda metamdbg
+```
+
+3. **most other packages**
+
+[minimap2](https://github.com/lh3/minimap2)
+```
+conda install bioconda::minimap2
+```
+[metabat2](https://bioconda.github.io/recipes/metabat2/README.html)
+```
+conda install bioconda::metabat2
+```
+CheckM got a newer version with differing methods, its recommended to try both so we'll do :) (took a while) \
+[old CheckM](https://github.com/Ecogenomics/CheckM) \
+[new CheckM2](https://github.com/chklovski/CheckM2)
+```
+conda install bioconda::checkm-genome bioconda::checkm2
+```
+[viralverify](https://github.com/ablab/viralVerify)
+```
+conda install bioconda::viralverify
+```
+---
+to do:
+[[1]](https://pypi.org/project/checkv/) \
+[[2]](https://github.com/tseemann/barrnap) \
+[[3]](https://github.com/EddyRivasLab/infernal) \
+[[4]](https://anaconda.org/channels/bioconda/packages/wfmash/overview)
+```
+
+```
+
+```
+
 ```
 
 
@@ -81,7 +115,7 @@ conda install -c conda-forge -c bioconda metamdbg
 - [x] lay low and learn :)
 
 **01st dec**
-- [ ] get tool installed on server
+- [x] get tool installed on server
 - [x] script for data download
 - [x] get data
 - [ ] code should be good to go for server
