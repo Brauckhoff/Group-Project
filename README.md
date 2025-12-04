@@ -29,8 +29,7 @@ Here is a tutorial for the [download](https://erilu.github.io/python-fastq-downl
 
 Downloaded sra-toolkit and created a script to download SRR codes like described under the 'download'-link (Removed all additional options). Can be found in the data folder. Usage:\
 `python3 fetch_sra_multi.py <SRR-ID1> <SRR-ID2> <...>`
-> download is currently running for all mentioned accession numbers (started 01.dec 18:00)
-> is in shared folder ready to use
+> fastq for all accession numbers are in shared folder ready to use
 
 take a look at [screen](https://www.geeksforgeeks.org/linux-unix/screen-command-in-linux-with-examples/) to run things in background
 
@@ -38,7 +37,10 @@ take a look at [screen](https://www.geeksforgeeks.org/linux-unix/screen-command-
 
 Installation should be done in your directory (root `cd ~`). 
 
-1. **miniconda** (takes ~30min)
+<details>
+  
+<summary>1. <b>miniconda</b> (takes ~30min)</summary>
+
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash ~/Miniconda3-latest-Linux-x86_64.sh
@@ -53,12 +55,22 @@ conda init --all
 source ~/.bashrc 
 ```
 
-2. **Tool** - [metaMDBG](https://github.com/GaetanBenoitDev/metaMDBG) 
+</details>
+
+<details>
+
+<summary>2. <b>Tool</b> - 
+<a href="https://github.com/GaetanBenoitDev/metaMDBG">metaMDBG</a></summary>
+
 ```
 conda install -c conda-forge -c bioconda metamdbg
 ```
 
-3. **most other packages**
+</details>
+
+<details>
+
+<summary>3. <b>most other packages</b> </summary>
 
 [minimap2](https://github.com/lh3/minimap2)
 ```
@@ -78,20 +90,28 @@ conda install bioconda::checkm-genome bioconda::checkm2
 ```
 conda install bioconda::viralverify
 ```
----
-to do:
-[[1]](https://pypi.org/project/checkv/) \
-[[2]](https://github.com/tseemann/barrnap) \
-[[3]](https://github.com/EddyRivasLab/infernal) \
-[[4]](https://anaconda.org/channels/bioconda/packages/wfmash/overview)
+[checkv](https://pypi.org/project/checkv/)
+```
+conda install -c conda-forge -c bioconda checkv
+```
+[barrnap](https://github.com/tseemann/barrnap)
+```
+conda install -c bioconda -c conda-forge barrnap
+```
+[infernal](https://github.com/EddyRivasLab/infernal)
+```
+conda install -c bioconda infernal 
+```
+[wfmash](https://anaconda.org/channels/bioconda/packages/wfmash/overview)
+```
+conda install -c bioconda -c conda-forge wfmash
 ```
 
-```
+</details>
 
-```
+## Next steps
 
-```
-
+*coming soon*
 
 # Questions
 
