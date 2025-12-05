@@ -160,7 +160,7 @@ metaMDBG asm --out-dir ./SRR13128014/ --in-hifi /teachstor/share/groupprojectWS2
 note: starts immediately start screen!
 
 
-for co-assembly just write the fastq.gz after one another: <fastq1> <fastq2> <...>
+for co-assembly just write the fastq.gz after one another: `<fastq1> <fastq2> <...>`
 
 </details>
 
