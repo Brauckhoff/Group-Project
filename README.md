@@ -156,9 +156,20 @@ build test:
 ```
 metaMDBG asm --out-dir ./SRR13128014/ --in-hifi /teachstor/share/groupprojectWS25/groupC/data/fastq/SRR13128014.fastq.gz --threads 50 --kmer-size 13
 ```
-- [ ] does run?
-note: starts immediately start screen!
+- [x] does run? yes, it does \
+note: starts immediately start screen! \
+Output for SRR13128014 (can be accessed vie log file)
+```
+        Run time:                   2h 12min 22sec
+        Peak memory:                2.47982 GB
+        Assembly length:            72004130
+        Contigs N50:                1894056
+        Nb contigs:                 580
+        Nb Contigs (>1Mb):          12
+        Nb circular contigs (>1Mb): 10
 
+```
+wrote a script that could run all (small modification needed)
 
 for co-assembly just write the fastq.gz after one another: `<fastq1> <fastq2> <...>`
 
