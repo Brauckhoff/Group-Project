@@ -111,7 +111,62 @@ conda install -c bioconda -c conda-forge wfmash
 
 ## Next steps
 
+<details>
+
+<summary>1. <b>avengers assemble</b></summary>
+
+do assemble for all metagenomes + co-assemblies \
+command they used:
+```
+metaMDBG asm outputDir reads -t 16 -l 13 -d 0.005
+```
+
+**current version adaptation**:
+> adapt [threads](https://orinoco.cs.uni-tuebingen.de/what-we-do.html) (nog has max 96 ; collins has max 48) \
+> -l might be string mimial size \
+> -d might be string density \
+> -l flag is deprecated couldnt really find anything based on the allowed options:
+```
+ Basic options:
+    --out-dir               Output dir for contigs and temporary files
+    --in-hifi               PacBio HiFi read filename(s) (separated by space)
+    --in-ont                Nanopore R10.4+ read filename(s) (separated by space)
+    --threads               Number of cores [1]
+
+  Assembly options:
+    --kmer-size             k-mer size [15]
+    --density-assembly      Fraction of total k-mers used for assembly [0.005]
+    --max-k                 Stop assembly after k iterations [0]
+    --min-abundance         Minimum abundance for k-min-mers (default = rescue mode) [0]
+    --all-assembly-graph    Generate assembly graph at each multi-k iteration (higher disk usage)
+
+  Correction options:
+    --min-read-quality      Minimum read average quality [0]
+    --density-correction    Fraction of total k-mers used for correction [0.025]
+    --min-read-identity     Min read identity [0.96]
+    --min-read-overlap      Min read overlap length [1000]
+    --skip-correction       Skip read correction
+
+```
+I would guess -l is kmer size and -d might be density assembly, but as they used 0.005 and its the default lets leave it here:
+```
+metaMDBG asm --out-dir ./<SRR-ID>/ --in-hifi <path-to-fastq.gz> --threads 32 --kmer-size 13
+```
+build test:
+```
+metaMDBG asm --out-dir ./SRR13128014/ --in-hifi /teachstor/share/groupprojectWS25/groupC/data/fastq/SRR13128014.fastq.gz --threads 50 --kmer-size 13
+```
+- [ ] does run?
+note: starts immediately start screen!
+
+
+for co-assembly just write the fastq.gz after one another: <fastq1> <fastq2> <...>
+
+</details>
+
 *coming soon*
+
+useful insight into further steps of [analysis](https://github.com/GaetanBenoitDev/MetaMDBG_Manuscript)
 
 # Questions
 
