@@ -21,4 +21,4 @@ ad1="/teachstor/share/groupprojectWS25/groupC/data/fastq/ERR10905741.fastq.gz"
 ad2="/teachstor/share/groupprojectWS25/groupC/data/fastq/ERR10905742.fastq.gz"
 ad3="/teachstor/share/groupprojectWS25/groupC/data/fastq/ERR10905743.fastq.gz"
 
-metaMDBG asm --out-dir ./co-assembly_human/ --in-hifi $ad1 $ad2 $ad3 --threads 16 --kmer-size 13
+metaMDBG asm --out-dir ./co-assembly_adhifi/ --in-hifi $ad1 $ad2 $ad3 --threads 16 --kmer-size 13
