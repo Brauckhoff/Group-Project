@@ -31,7 +31,8 @@ Downloaded sra-toolkit and created a script to download SRR codes like described
 `python3 fetch_sra_multi.py <SRR-ID1> <SRR-ID2> <...>`
 > fastq for all accession numbers are in shared folder ready to use
 
-take a look at [screen](https://www.geeksforgeeks.org/linux-unix/screen-command-in-linux-with-examples/) to run things in background
+take a look at [screen](https://www.geeksforgeeks.org/linux-unix/screen-command-in-linux-with-examples/) to run things in background \
+[server docs](https://orinoco.cs.uni-tuebingen.de/what-we-do.html)
 
 ## Set up environment
 
@@ -122,7 +123,6 @@ metaMDBG asm outputDir reads -t 16 -l 13 -d 0.005
 ```
 
 **current version adaptation**:
-> adapt [threads](https://orinoco.cs.uni-tuebingen.de/what-we-do.html) (nog has max 96 ; collins has max 48) \
 > -l might be string mimial size \
 > -d might be string density \
 > -l flag is deprecated couldnt really find anything based on the allowed options:
@@ -150,11 +150,11 @@ metaMDBG asm outputDir reads -t 16 -l 13 -d 0.005
 ```
 I would guess -l is kmer size and -d might be density assembly, but as they used 0.005 and its the default lets leave it here:
 ```
-metaMDBG asm --out-dir ./<SRR-ID>/ --in-hifi <path-to-fastq.gz> --threads 32 --kmer-size 13
+metaMDBG asm --out-dir ./<SRR-ID>/ --in-hifi <path-to-fastq.gz> --threads 16 --kmer-size 13
 ```
 build test:
 ```
-metaMDBG asm --out-dir ./SRR13128014/ --in-hifi /teachstor/share/groupprojectWS25/groupC/data/fastq/SRR13128014.fastq.gz --threads 50 --kmer-size 13
+metaMDBG asm --out-dir ./SRR13128014/ --in-hifi /teachstor/share/groupprojectWS25/groupC/data/fastq/SRR13128014.fastq.gz --threads 16 --kmer-size 13
 ```
 - [x] does run? yes, it does \
 note: starts immediately start screen! \
