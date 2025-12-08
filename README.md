@@ -11,7 +11,7 @@ I would focus on the larger samples but mock is also an option - *to discuss*
 
 | Sample    | Accessions  | Estimated time | Run time for us| used threads | peak memory |
 | --------- | ----------- | -------------- |----------------|--------------|-------------|
-| [Zymo](https://s3.amazonaws.com/zymo-files/BioPool/D6331.refseq.zip)?     | SRR13128014 | 2h12min   | 50 | 2.5GB|
+| [Zymo](https://s3.amazonaws.com/zymo-files/BioPool/D6331.refseq.zip)?     | SRR13128014 | ? | 2h12min   | 50 | 2.5GB|
 | [ATCC](https://www.atcc.org/products/msa-1003)?     | SRR11606871 | ?              |6h45min| 20 | 3.6GB |
 | [human gut](https://downloads.pacbcloud.com/public/dataset/Sequel-IIe-202104/metagenomics/) | SRR15275213 | 7h   | 6h2min | 16 | 11.8GB |
 |           | SRR15275212 | 7h           | 4h55min | 16 | 11.6GB |
