@@ -9,20 +9,20 @@ Reproduce analysis of the paper and compare to original paper.
 Lets focus on PacBio and if we get bored then add some OxfordNanopore...\
 I would focus on the larger samples but mock is also an option - *to discuss*
 
-| Sample    | Accessions  | Estimated time |
-| --------- | ----------- | -------------- |
-| [Zymo](https://s3.amazonaws.com/zymo-files/BioPool/D6331.refseq.zip)?     | SRR13128014 | ?              |
-| [ATCC](https://www.atcc.org/products/msa-1003)?     | SRR11606871 | ?              |
-| [human gut](https://downloads.pacbcloud.com/public/dataset/Sequel-IIe-202104/metagenomics/) | SRR15275213 | 7h   |
-|           | SRR15275212 | 7h           |
-|           | SRR15275211 | 6h           |
-|           | SRR15275210 | 6h           |
-|           | *co-assembly* | 36h        |
-| [AD-HiFi](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SAMEA8949998&o=acc_s%3Aa&s=ERR10905741)   | ERR10905741 | 12h        |
-|           | ERR10905742 | 13h        |
-|           | ERR10905743 | 13h        |
-|           | *co-assembly* | 77h      |
-| Sheep rumen | SRR14289618 | 108h     |
+| Sample    | Accessions  | Estimated time | Run time for us|
+| --------- | ----------- | -------------- |----------------|
+| [Zymo](https://s3.amazonaws.com/zymo-files/BioPool/D6331.refseq.zip)?     | SRR13128014 | ?              |?|
+| [ATCC](https://www.atcc.org/products/msa-1003)?     | SRR11606871 | ?              |6h45min|
+| [human gut](https://downloads.pacbcloud.com/public/dataset/Sequel-IIe-202104/metagenomics/) | SRR15275213 | 7h   |?|
+|           | SRR15275212 | 7h           |?|
+|           | SRR15275211 | 6h           |?|
+|           | SRR15275210 | 6h           |?|
+|           | *co-assembly* | 36h        |?|
+| [AD-HiFi](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SAMEA8949998&o=acc_s%3Aa&s=ERR10905741)   | ERR10905741 | 12h        |?|
+|           | ERR10905742 | 13h        |?|
+|           | ERR10905743 | 13h        |?|
+|           | *co-assembly* | 77h      |?|
+| Sheep rumen | SRR14289618 | 108h     |?|
 
 Here is a tutorial for the [download](https://erilu.github.io/python-fastq-downloader/)... also with possible python integration :D
 > we need fastq.gz file format 
@@ -175,11 +175,17 @@ for co-assembly just write the fastq.gz after one another: `<fastq1> <fastq2> <.
 
 </details>
 
+<details>
+
+<summary>2. <b>analysis</b></summary>
+
+</details>
+
 *coming soon*
 
 useful insight into further steps of [analysis](https://github.com/GaetanBenoitDev/MetaMDBG_Manuscript)
 
-# Questions
+# Questions/Meetings
 
 *17th Nov*:
 - should we perform all analysis (some take > 30 days)? // repeat whole benchmark or only analysis with metaMDBG?\
@@ -190,6 +196,11 @@ useful insight into further steps of [analysis](https://github.com/GaetanBenoitD
 *Answer* - yes we do that :), but start small with 2-3 datasets if time continue
 
 *08th Dec*:
+- Update what we have done: assembly for all data sets are running, one run interrupted with out an error message (run again)
+- Plan to check first parts of analysis for next week
+
+*15th Dec*:
+
 
 
 # Timeline (in weeks)
@@ -204,10 +215,10 @@ useful insight into further steps of [analysis](https://github.com/GaetanBenoitD
 - [x] get tool installed on server
 - [x] script for data download
 - [x] get data
-- [ ] code should be good to go for server
+- [x] code should be good to go for server
 
 **08th dec**
-- [ ] NEXT MEETING :)
+- [x] NEXT MEETING :)
 - [ ] do analyses and debug
 
 **15th dec**
