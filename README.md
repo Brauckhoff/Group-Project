@@ -9,14 +9,14 @@ Reproduce analysis of the paper and compare to original paper.
 Lets focus on PacBio and if we get bored then add some OxfordNanopore...\
 I would focus on the larger samples but mock is also an option - *to discuss*
 
-| Sample    | Accessions  | Estimated time | Run time for us|
-| --------- | ----------- | -------------- |----------------|
-| [Zymo](https://s3.amazonaws.com/zymo-files/BioPool/D6331.refseq.zip)?     | SRR13128014 | ?              |?|
-| [ATCC](https://www.atcc.org/products/msa-1003)?     | SRR11606871 | ?              |6h45min|
-| [human gut](https://downloads.pacbcloud.com/public/dataset/Sequel-IIe-202104/metagenomics/) | SRR15275213 | 7h   |?|
-|           | SRR15275212 | 7h           |?|
-|           | SRR15275211 | 6h           |?|
-|           | SRR15275210 | 6h           |?|
+| Sample    | Accessions  | Estimated time | Run time for us| used threads | peak memory |
+| --------- | ----------- | -------------- |----------------|--------------|-------------|
+| [Zymo](https://s3.amazonaws.com/zymo-files/BioPool/D6331.refseq.zip)?     | SRR13128014 | 2h12min   | 50 | 2.5GB|
+| [ATCC](https://www.atcc.org/products/msa-1003)?     | SRR11606871 | ?              |6h45min| 20 | 3.6GB |
+| [human gut](https://downloads.pacbcloud.com/public/dataset/Sequel-IIe-202104/metagenomics/) | SRR15275213 | 7h   | 6h2min | 16 | 11.8GB |
+|           | SRR15275212 | 7h           | 4h55min | 16 | 11.6GB |
+|           | SRR15275211 | 6h           | 5h45min | 16 | 11.3GB |
+|           | SRR15275210 | 6h           | 5h20min | 16 | 11.3GB |
 |           | *co-assembly* | 36h        |?|
 | [AD-HiFi](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SAMEA8949998&o=acc_s%3Aa&s=ERR10905741)   | ERR10905741 | 12h        |?|
 |           | ERR10905742 | 13h        |?|
