@@ -18,8 +18,8 @@ I would focus on the larger samples but mock is also an option - *to discuss*
 |           | SRR15275211 | 6h           | 5h45min | 16 | 11.3GB |
 |           | SRR15275210 | 6h           | 5h20min | 16 | 11.3GB |
 |           | *co-assembly* | 36h        |?|
-| [AD-HiFi](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SAMEA8949998&o=acc_s%3Aa&s=ERR10905741)   | ERR10905741 | 12h        |?|
-|           | ERR10905742 | 13h        |?|
+| [AD-HiFi](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SAMEA8949998&o=acc_s%3Aa&s=ERR10905741)   | ERR10905741 | 12h        | 11h14min | 16 | 10.9GB |
+|           | ERR10905742 | 13h        | 11h20min | 16 | 11GB |
 |           | ERR10905743 | 13h        |?|
 |           | *co-assembly* | 77h      |?|
 | Sheep rumen | SRR14289618 | 108h     |?|
