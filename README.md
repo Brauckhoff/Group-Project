@@ -20,7 +20,7 @@ I would focus on the larger samples but mock is also an option - *to discuss*
 |           | *co-assembly* | 36h        |?|
 | [AD-HiFi](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SAMEA8949998&o=acc_s%3Aa&s=ERR10905741)   | ERR10905741 | 12h        | 11h14min | 16 | 10.9GB |
 |           | ERR10905742 | 13h        | 11h20min | 16 | 11GB |
-|           | ERR10905743 | 13h        |?|
+|           | ERR10905743 | 13h        | 13h47min | 16 | 12.6GB |
 |           | *co-assembly* | 77h      |?|
 | Sheep rumen | SRR14289618 | 108h     |?|
 
