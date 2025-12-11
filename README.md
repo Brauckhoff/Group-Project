@@ -201,6 +201,7 @@ useful insight into further steps of [analysis](https://github.com/GaetanBenoitD
 
 *15th Dec*:
 - Confirm how do we analyse the sample, check if we are on the right track?
+- ask, if we have to "determine the fraction of reads" and "estimate contig coverage across samples before binning" (p.10/1387, last paragraph)
 
 
 # Timeline (in weeks)
