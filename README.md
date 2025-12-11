@@ -200,7 +200,7 @@ useful insight into further steps of [analysis](https://github.com/GaetanBenoitD
 - Plan to check first parts of analysis for next week
 
 *15th Dec*:
-
+- Confirm how do we analyse the sample, check if we are on the right track?
 
 
 # Timeline (in weeks)
