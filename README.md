@@ -262,8 +262,7 @@ See `man ./minimap2.1' for detailed description of these and other advanced comm
 As some options do not exist anymore or do not work, sofar this command was used to run it:
 
 ```
-minimap2 -t 16   -a -k 19 -w 10 -I 10G -g 5000  -A 2 -B 5 -O 5,56 -E 4,1 -z 400,50   assembled/ERR10905741/contigs.fasta.gz data/fastq/ERR10
-905741.fastq.gz | samtools sort -@ 16 -o metaBat2/ERR10905741.bam
+minimap2 -t 16   -a -k 19 -w 10 -I 10G -g 5000  -A 2 -B 5 -O 5,56 -E 4,1 -z 400,50   assembled/ERR10905741/contigs.fasta.gz data/fastq/ERR10905741.fastq.gz | samtools sort -@ 16 -o metaBat2/ERR10905741/ERR10905741.bam
 ```
 
 This was the print out: 
@@ -339,11 +338,58 @@ In here I understand it as they do the script sorting afterwards.
 "We used MetaBAT2 for initial binning and then post-process MetaBAT2 results to get final MAGs. We aligned raw reads to an assembly with ‘minimap2 -ak19 -w10 -I10G -g5k -r2k --lj-min-ratio 0.5 -A2 -B5 -O5,56 -E4,1 -z400,50 contigs.fa reads.fa’ 22, calculated the depth with ‘jgi_summa_rsize_bam_contig_depths --outputDepth depth.txt input.bam’ and ran MetaBAT2 with ‘metabat2 --seed 1 -i contigs.fa -a depth.txt’. We tried different random seeds or ‘-s 500000’, and got similar results. We only applied MetaBAT2 to the primary hifiasm-meta and HiCanu assemblies, as including alternative assemblies led to worse binning. After MetaBAT2 binning, we separate circular contigs of 1 Mb or longer into a separate MAG if it is binned together with other contigs."
 
 
+
 As it was easier to continue with out the sorting I started a metaBat2
+<details>
+<summary> <b>Usage of metabat2</b></summary>
+```
+MetaBAT: Metagenome Binning based on Abundance and Tetranucleotide frequency (version 2.12.1; Aug 31 2017 21:02:54)
+by Don Kang (ddkang@lbl.gov), Feng Li, Jeff Froula, Rob Egan, and Zhong Wang (zhongwang@lbl.gov)
+
+Allowed options:
+  -h [ --help ]                     produce help message
+  -i [ --inFile ] arg               Contigs in (gzipped) fasta file format [Mandatory]
+  -o [ --outFile ] arg              Base file name and path for each bin. The default output is fasta format.
+                                    Use -l option to output only contig names [Mandatory].
+  -a [ --abdFile ] arg              A file having mean and variance of base coverage depth (tab delimited;
+                                    the first column should be contig names, and the first row will be
+                                    considered as the header and be skipped) [Optional].
+  -m [ --minContig ] arg (=2500)    Minimum size of a contig for binning (should be >=1500).
+  --maxP arg (=95)                  Percentage of 'good' contigs considered for binning decided by connection
+                                    among contigs. The greater, the more sensitive.
+  --minS arg (=60)                  Minimum score of a edge for binning (should be between 1 and 99). The
+                                    greater, the more specific.
+  --maxEdges arg (=200)             Maximum number of edges per node. The greater, the more sensitive.
+  --pTNF arg (=0)                   TNF probability cutoff for building TNF graph. Use it to skip the
+                                    preparation step. (0: auto).
+  --noAdd                           Turning off additional binning for lost or small contigs.
+  --cvExt                           When a coverage file without variance (from third party tools) is used
+                                    instead of abdFile from jgi_summarize_bam_contig_depths.
+  -x [ --minCV ] arg (=1)           Minimum mean coverage of a contig in each library for binning.
+  --minCVSum arg (=1)               Minimum total effective mean coverage of a contig (sum of depth over
+                                    minCV) for binning.
+  -s [ --minClsSize ] arg (=200000) Minimum size of a bin as the output.
+  -t [ --numThreads ] arg (=0)      Number of threads to use (0: use all cores).
+  -l [ --onlyLabel ]                Output only sequence labels as a list in a column without sequences.
+  --saveCls                         Save cluster memberships as a matrix format
+  --unbinned                        Generate [outFile].unbinned.fa file for unbinned contigs
+  --noBinOut                        No bin output. Usually combined with --saveCls to check only contig
+                                    memberships
+  --seed arg (=0)                   For exact reproducibility. (0: use random seed)
+  -d [ --debug ]                    Debug output
+  -v [ --verbose ]                  Verbose output
+```
+</details>
+
 ```
 metabat2 --seed 42 -i assembled/ERR10905741/contigs.fasta.gz -o metaBat2/binERR10905741 -a metaBat2/depth.txt -t 16
 ```
-
+This was printed in the console afterwards: 
+```
+MetaBAT 2 (v2.12.1) using minContig 2500, minCV 1.0, minCVSum 1.0, maxP 95%, minS 60, and maxEdges 200. 
+791 bins (1055104432 bases in total) formed.
+```
+And we have 791 binned files which when I undersatnd it correctly are our MAGs
 
 </details>
 
