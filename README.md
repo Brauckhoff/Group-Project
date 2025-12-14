@@ -342,6 +342,7 @@ In here I understand it as they do the script sorting afterwards.
 As it was easier to continue with out the sorting I started a metaBat2
 <details>
 <summary> <b>Usage of metabat2</b></summary>
+  
 ```
 MetaBAT: Metagenome Binning based on Abundance and Tetranucleotide frequency (version 2.12.1; Aug 31 2017 21:02:54)
 by Don Kang (ddkang@lbl.gov), Feng Li, Jeff Froula, Rob Egan, and Zhong Wang (zhongwang@lbl.gov)
@@ -379,6 +380,7 @@ Allowed options:
   -d [ --debug ]                    Debug output
   -v [ --verbose ]                  Verbose output
 ```
+
 </details>
 
 ```
