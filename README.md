@@ -274,6 +274,77 @@ This was the print out:
 [bam_sort_core] merging from 5 files and 16 in-memory blocks...
 ```
 
+Coninued with generating the depth file with ``` jgi_summarize_bam_contig_depths ``` from metaBat2
+<details>
+<summary> <b>Usage of jgi_summarize_bam_contig_depths</b></summary>
+
+```
+Usage: jgi_summarize_bam_contig_depths <options> sortedBam1 [ sortedBam2 ...]
+where options include:
+        --outputDepth       arg  The file to put the contig by bam depth matrix (default: STDOUT)
+        --percentIdentity   arg  The minimum end-to-end % identity of qualifying reads (default: 97)
+        --pairedContigs     arg  The file to output the sparse matrix of contigs which paired reads span (default: none)
+        --unmappedFastq     arg  The prefix to output unmapped reads from each bam file suffixed by 'bamfile.bam.fastq.gz'
+        --noIntraDepthVariance   Do not include variance from mean depth along the contig
+        --showDepth              Output a .depth file per bam for each contig base
+        --minMapQual        arg  The minimum mapping quality necessary to count the read as mapped (default: 0)
+        --weightMapQual     arg  Weight per-base depth based on the MQ of the read (i.e uniqueness) (default: 0.0 (disabled))
+        --includeEdgeBases       When calculating depth & variance, include the 1-readlength edges (off by default)
+        --maxEdgeBases           When calculating depth & variance, and not --includeEdgeBases, the maximum length (default:75)
+        --referenceFasta    arg  The reference file.  (It must be the same fasta that bams used)
+
+Options that require a --referenceFasta
+        --outputGC          arg  The file to print the gc coverage histogram
+        --gcWindow          arg  The sliding window size for GC calculations
+        --outputReadStats   arg  The file to print the per read statistics
+        --outputKmers       arg  The file to print the perfect kmer counts
+
+Options to control shredding contigs that are under represented by the reads
+        --shredLength       arg  The maximum length of the shreds
+        --shredDepth        arg  The depth to generate overlapping shreds
+        --minContigLength   arg  The mimimum length of contig to include for mapping and shredding
+        --minContigDepth    arg  The minimum depth along contig at which to break the contig
+```
+</details>
+
+This is the command I used: 
+```
+jgi_summarize_bam_contig_depths --outputDepth metaBat2/depth.txt metaBat2/ERR10905741.bam
+```
+
+The print out after it was done: (took around 5-10 minutes)
+
+```
+Output depth matrix to metaBat2/depth.txt
+Output matrix to metaBat2/depth.txt
+Opening 1 bams
+Consolidating headers
+Processing bam files
+Thread 0 finished: ERR10905741.bam with 8568576 reads and 4746235 readsWellMapped
+Creating depth matrix file: metaBat2/depth.txt
+Closing most bam files
+Closing last bam file
+Finished
+```
+
+If this is run how to continue?:  
+"We performed contig binning using MetaBAT2 (ref. 32), with
+default parameters and a fixed seed (–seed 42) for reproducibility.
+As MetaBAT2 may bin strains from the same species, creating a single
+apparently contaminated MAG, we separated all circular contigs of
+1 Mb or longer before binning the remaining contigs, as suggested in
+the hifiasm-meta study." 
+Here they cite the paper: https://www.nature.com/articles/s41592-022-01478-3, 
+In here I understand it as they do the script sorting afterwards. 
+"We used MetaBAT2 for initial binning and then post-process MetaBAT2 results to get final MAGs. We aligned raw reads to an assembly with ‘minimap2 -ak19 -w10 -I10G -g5k -r2k --lj-min-ratio 0.5 -A2 -B5 -O5,56 -E4,1 -z400,50 contigs.fa reads.fa’ 22, calculated the depth with ‘jgi_summa_rsize_bam_contig_depths --outputDepth depth.txt input.bam’ and ran MetaBAT2 with ‘metabat2 --seed 1 -i contigs.fa -a depth.txt’. We tried different random seeds or ‘-s 500000’, and got similar results. We only applied MetaBAT2 to the primary hifiasm-meta and HiCanu assemblies, as including alternative assemblies led to worse binning. After MetaBAT2 binning, we separate circular contigs of 1 Mb or longer into a separate MAG if it is binned together with other contigs."
+
+
+As it was easier to continue with out the sorting I started a metaBat2
+```
+metabat2 --seed 42 -i assembled/ERR10905741/contigs.fasta.gz -o metaBat2/binERR10905741 -a metaBat2/depth.txt -t 16
+```
+
+
 </details>
 
 *coming soon*
@@ -297,6 +368,7 @@ useful insight into further steps of [analysis](https://github.com/GaetanBenoitD
 *15th Dec*:
 - Confirm how do we analyse the sample, check if we are on the right track?
 - ask, if we have to "determine the fraction of reads" and "estimate contig coverage across samples before binning" (p.10/1387, last paragraph)
+- Ask about single and co-assembly anaysis
 
 
 # Timeline (in weeks)
