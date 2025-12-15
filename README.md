@@ -17,12 +17,12 @@ I would focus on the larger samples but mock is also an option - *to discuss*
 |           | SRR15275212 | 7h           | 4h55min | 16 | 11.6GB |
 |           | SRR15275211 | 6h           | 5h45min | 16 | 11.3GB |
 |           | SRR15275210 | 6h           | 5h20min | 16 | 11.3GB |
-|           | *co-assembly* | 36h        |?|
+|           | *co-assembly* | 36h        | 14h33min | 32 | 14.3GB |
 | [AD-HiFi](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SAMEA8949998&o=acc_s%3Aa&s=ERR10905741)   | ERR10905741 | 12h        | 11h14min | 16 | 10.9GB |
 |           | ERR10905742 | 13h        | 11h20min | 16 | 11GB |
 |           | ERR10905743 | 13h        | 13h47min | 16 | 12.6GB |
-|           | *co-assembly* | 77h      |?|
-| Sheep rumen | SRR14289618 | 108h     |?|
+|           | *co-assembly* | 77h      | 27h31min | 32 | 13.4GB |
+| Sheep rumen | SRR14289618 | 108h     | 39h27min | 32 | 13.7GB |
 
 Here is a tutorial for the [download](https://erilu.github.io/python-fastq-downloader/)... also with possible python integration :D
 > we need fastq.gz file format 
