@@ -190,6 +190,45 @@ for co-assembly just write the fastq.gz after one another: `<fastq1> <fastq2> <.
 command used: /usr/bin/time -v flye --pacbio-hifi ./data/fastq/SRR15275213.fastq.gz --out-dir ./assembled_flye/SRR15275213/ --threads 16 --plasmids --meta
 - --plasmid not available anymore
 
+/usr/bin/time -v output + some more
+- SRR15275213
+```
+[2025-12-16 22:25:43] INFO: Assembly statistics:
+
+        Total length:   1120065792
+        Fragments:      13330
+        Fragments N50:  172021
+        Largest frg:    4412174
+        Scaffolds:      0
+        Mean coverage:  15
+
+[2025-12-16 22:25:43] INFO: Final assembly: /teachstor/share/groupprojectWS25/groupC/assembled_flye/SRR15275213_2/assembly.fasta
+        Command being timed: "flye --pacbio-hifi ./data/fastq/SRR15275213.fastq.gz --out-dir ./assembled_flye/SRR15275213_2/ --threads 16 --plasmids --meta"
+        User time (seconds): 302759.05
+        System time (seconds): 2968.45
+        Percent of CPU this job got: 1357%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 6:15:13
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 33337548
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 800
+        Minor (reclaiming a frame) page faults: 1174784422
+        Voluntary context switches: 51952469
+        Involuntary context switches: 1089479
+        Swaps: 0
+        File system inputs: 54733600
+        File system outputs: 116560832
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+```
+- 
+
 
 # hifiasm-meta
 
