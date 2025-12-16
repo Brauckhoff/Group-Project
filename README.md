@@ -190,6 +190,65 @@ for co-assembly just write the fastq.gz after one another: `<fastq1> <fastq2> <.
 command used: /usr/bin/time -v flye --pacbio-hifi ./data/fastq/SRR15275213.fastq.gz --out-dir ./assembled_flye/SRR15275213/ --threads 16 --plasmids --meta
 - --plasmid not available anymore
 
+
+# hifiasm-meta
+
+Create enviroment: I let run one command after the other
+```
+conda create -n hifiasm-meta-new -c bioconda -c conda-forge   samtools   minimap2   pigz   -y
+conda activate hifiasm-meta-new
+conda install bioconda::hifiasm_meta
+```
+
+In case we are interested in the version: ha base version: 0.13-r308  
+hamt version: 0.3-r079
+
+Command used: 
+```
+/usr/bin/time -v hifiasm_meta -t 16 -o assembled_hifi/SRR15275210/asm data/fastq/SRR15275210.fastq.gz
+```
+
+
+Output (messy wird noch aufgeraumt):
+Von der ersten Probe (0 am Ende)
+```
+Iteration 750: error is 0.366256 (50 iterations in 1.33 seconds)
+Iteration 800: error is 0.364505 (50 iterations in 1.27 seconds)
+Iteration 850: error is 0.363717 (50 iterations in 1.28 seconds)
+Iteration 900: error is 0.362064 (50 iterations in 1.29 seconds)
+Iteration 950: error is 0.361129 (50 iterations in 1.27 seconds)
+Iteration 999: error is 0.359461 (50 iterations in 1.28 seconds)
+Fitting performed in 26.02 seconds.
+[M::hamt_simple_binning] Binning used 28.14s. 619 bins (174 have more than 1 contig).
+[M::main] Hifiasm code base version: 0.13-r308
+[M::main] Hifiasm_meta version: 0.3-r079
+[M::main] CMD: hifiasm_meta -t 16 -o assembled_hifi/SRR15275210/asm data/fastq/SRR15275210.fastq.gz
+[M::main] Real time: 14541.046 sec; CPU: 183574.477 sec; Peak RSS: 151.036 GB
+        Command being timed: "hifiasm_meta -t 16 -o assembled_hifi/SRR15275210/asm data/fastq/SRR15275210.fastq.gz"
+        User time (seconds): 180569.35
+        System time (seconds): 3025.25
+        Percent of CPU this job got: 1260%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 4:02:41
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 158372472
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 77
+        Minor (reclaiming a frame) page faults: 686303237
+        Voluntary context switches: 19315151
+        Involuntary context switches: 408729
+        Swaps: 0
+        File system inputs: 14034832
+        File system outputs: 32397920
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+```
+
 </details>
 
 <details>
