@@ -249,6 +249,40 @@ Fitting performed in 26.02 seconds.
         Exit status: 0
 ```
 
+Von der zweiten Probe
+
+```
+Fitting performed in 31.13 seconds.
+[M::hamt_simple_binning] Binning used 33.71s. 717 bins (188 have more than 1 contig).
+[M::main] Hifiasm code base version: 0.13-r308
+[M::main] Hifiasm_meta version: 0.3-r079
+[M::main] CMD: hifiasm_meta -t 16 -o assembled_hifi/SRR15275211/asm data/fastq/SRR15275211.fastq.gz
+[M::main] Real time: 22326.351 sec; CPU: 285173.493 sec; Peak RSS: 192.118 GB
+        Command being timed: "hifiasm_meta -t 16 -o assembled_hifi/SRR15275211/asm data/fastq/SRR15275211.fastq.gz"
+        User time (seconds): 281010.78
+        System time (seconds): 4189.64
+        Percent of CPU this job got: 1275%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 6:12:33
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 201450584
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 42
+        Minor (reclaiming a frame) page faults: 858494970
+        Voluntary context switches: 23380418
+        Involuntary context switches: 695526
+        Swaps: 0
+        File system inputs: 13191232
+        File system outputs: 39526608
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+```
+
 </details>
 
 <details>
