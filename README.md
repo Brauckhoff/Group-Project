@@ -187,7 +187,10 @@ for co-assembly just write the fastq.gz after one another: `<fastq1> <fastq2> <.
 
 # MetaFlye
 
-command used: /usr/bin/time -v flye --pacbio-hifi ./data/fastq/SRR15275213.fastq.gz --out-dir ./assembled_flye/SRR15275213/ --threads 16 --plasmids --meta
+command used: 
+```
+/usr/bin/time -v -o ./assmebled_flye/times/SRR15275212 flye --pacbio-hifi ./data/fastq/SRR15275212.fastq.gz --out-dir ./assembled_flye/SRR15275212/ --threads 16 --plasmids --meta
+```
 - --plasmid not available anymore
 
 /usr/bin/time -v output + some more
@@ -227,7 +230,42 @@ command used: /usr/bin/time -v flye --pacbio-hifi ./data/fastq/SRR15275213.fastq
         Page size (bytes): 4096
         Exit status: 0
 ```
-- 
+- SRR15275212
+```
+[2025-12-16 21:46:31] INFO: Assembly statistics:
+
+        Total length:   1044481940
+        Fragments:      15160
+        Fragments N50:  133587
+        Largest frg:    4415199
+        Scaffolds:      0
+        Mean coverage:  14
+
+[2025-12-16 21:46:31] INFO: Final assembly: /teachstor/share/groupprojectWS25/groupC/assembled_flye/SRR15275212/assembly.fasta
+        Command being timed: "flye --pacbio-hifi ./data/fastq/SRR15275212.fastq.gz --out-dir ./assembled_flye/SRR15275212/ --threads 16 --plasmids --meta"
+        User time (seconds): 268192.78
+        System time (seconds): 2823.89
+        Percent of CPU this job got: 1336%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 5:37:58
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 31305084
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 800
+        Minor (reclaiming a frame) page faults: 1031255622
+        Voluntary context switches: 46392095
+        Involuntary context switches: 1058231
+        Swaps: 0
+        File system inputs: 66324744
+        File system outputs: 104842888
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+```
 
 
 # hifiasm-meta
