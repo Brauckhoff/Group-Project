@@ -189,7 +189,7 @@ for co-assembly just write the fastq.gz after one another: `<fastq1> <fastq2> <.
 
 command used: 
 ```
-/usr/bin/time -v -o ./assmebled_flye/times/SRR15275212 flye --pacbio-hifi ./data/fastq/SRR15275212.fastq.gz --out-dir ./assembled_flye/SRR15275212/ --threads 16 --plasmids --meta
+/usr/bin/time -v -o ./assembled_flye/times/SRR15275212.log flye --pacbio-hifi ./data/fastq/SRR15275212.fastq.gz --out-dir ./assembled_flye/SRR15275212/ --threads 16 --plasmids --meta
 ```
 - --plasmid not available anymore
 
