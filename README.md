@@ -184,14 +184,15 @@ wrote a script that could run all (small modification needed)
 
 for co-assembly just write the fastq.gz after one another: `<fastq1> <fastq2> <...>`
 
-</details>
-
-<details>
 
 # MetaFlye
 
 command used: /usr/bin/time -v flye --pacbio-hifi ./data/fastq/SRR15275213.fastq.gz --out-dir ./assembled_flye/SRR15275213/ --threads 16 --plasmids --meta
 - --plasmid not available anymore
+
+</details>
+
+<details>
 
 <summary>2. <b>analysis</b></summary>
 
