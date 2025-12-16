@@ -188,6 +188,11 @@ for co-assembly just write the fastq.gz after one another: `<fastq1> <fastq2> <.
 
 <details>
 
+# MetaFlye
+
+command used: /usr/bin/time -v flye --pacbio-hifi ./data/fastq/SRR15275213.fastq.gz --out-dir ./assembled_flye/SRR15275213/ --threads 16 --plasmids --meta
+- --plasmid not available anymore
+
 <summary>2. <b>analysis</b></summary>
 
 # Binning of the assembled data
