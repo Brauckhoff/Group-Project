@@ -266,6 +266,28 @@ command used:
         Page size (bytes): 4096
         Exit status: 0
 ```
+- SRR15275211
+```
+[2025-12-17 05:52:12] INFO: Assembly statistics:
+
+        Total length:   1039575058
+        Fragments:      14461
+        Fragments N50:  148559
+        Largest frg:    3535447
+        Scaffolds:      0
+        Mean coverage:  16
+```
+- SRR15275210
+```
+[2025-12-17 05:08:47] INFO: Assembly statistics:
+
+        Total length:   923783802
+        Fragments:      15322
+        Fragments N50:  116961
+        Largest frg:    3535461
+        Scaffolds:      0
+        Mean coverage:  15
+```
 
 
 # hifiasm-meta
