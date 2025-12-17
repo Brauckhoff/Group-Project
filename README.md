@@ -382,6 +382,75 @@ Fitting performed in 31.13 seconds.
         Exit status: 0
 ```
 
+Dritte
+
+```
+
+Fitting performed in 30.62 seconds.
+[M::hamt_simple_binning] Binning used 33.16s. 721 bins (188 have more than 1 contig).
+[M::main] Hifiasm code base version: 0.13-r308
+[M::main] Hifiasm_meta version: 0.3-r079
+[M::main] CMD: hifiasm_meta -t 16 -o assembled_hifi/SRR15275212/asm data/fastq/SRR15275212.fastq.gz
+[M::main] Real time: 13676.352 sec; CPU: 169763.226 sec; Peak RSS: 154.724 GB
+        Command being timed: "hifiasm_meta -t 16 -o assembled_hifi/SRR15275212/asm data/fastq/SRR15275212.fastq.gz"
+        User time (seconds): 166846.38
+        System time (seconds): 2936.15
+        Percent of CPU this job got: 1239%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 3:48:15
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 162239352
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 45
+        Minor (reclaiming a frame) page faults: 709487355
+        Voluntary context switches: 20651977
+        Involuntary context switches: 416902
+        Swaps: 0
+        File system inputs: 9588832
+        File system outputs: 30597680
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+```
+
+Vierte
+
+```
+Fitting performed in 29.26 seconds.
+[M::hamt_simple_binning] Binning used 32.24s. 796 bins (233 have more than 1 contig).
+[M::main] Hifiasm code base version: 0.13-r308
+[M::main] Hifiasm_meta version: 0.3-r079
+[M::main] CMD: hifiasm_meta -t 16 -o assembled_hifi/SRR15275213/asm data/fastq/SRR15275213.fastq.gz
+[M::main] Real time: 16725.913 sec; CPU: 230189.164 sec; Peak RSS: 183.318 GB
+        Command being timed: "hifiasm_meta -t 16 -o assembled_hifi/SRR15275213/asm data/fastq/SRR15275213.fastq.gz"
+        User time (seconds): 226514.86
+        System time (seconds): 3699.84
+        Percent of CPU this job got: 1374%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 4:39:11
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 192222752
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 19
+        Minor (reclaiming a frame) page faults: 773343671
+        Voluntary context switches: 20497182
+        Involuntary context switches: 512678
+        Swaps: 0
+        File system inputs: 11682144
+        File system outputs: 36057296
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+```
+
 </details>
 
 <details>
