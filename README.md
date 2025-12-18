@@ -288,6 +288,17 @@ command used:
         Scaffolds:      0
         Mean coverage:  15
 ```
+- ERR10905742
+```
+[2025-12-18 17:49:09] INFO: Assembly statistics:
+
+        Total length:   1521637991
+        Fragments:      43702
+        Fragments N50:  56115
+        Largest frg:    6120779
+        Scaffolds:      0
+        Mean coverage:  40
+```
 
 
 # hifiasm-meta
