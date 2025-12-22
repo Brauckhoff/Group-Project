@@ -551,6 +551,25 @@ This was the print out:
 [bam_sort_core] merging from 5 files and 16 in-memory blocks...
 ```
 
+environment with minimap2 v2.21-r1071 + samtools v1.16.1
+```
+conda create -n envMinimap --no-channel-priority -c bioconda -c conda-forge minimap2=2.21 samtools=1.16.1
+```
+- `--no-channel-priority`: ensures the right dependencies can be installed after setting `conda config --set channel_priority strict` (maybe not necessary if this wasn't done)
+- `minimap2=2.21` results in v2.21-r1071
+
+running minimap2 and samtools with older versions:
+```
+minimap2 -t 16 -ak19 -w10 -I10G -g5k -r2k --lj-min-ratio 0.5 -A2 -B5 -O5,56 -E4,1 -z400,50 contigs reads | samtools sort -@ 16 -o align.bam
+```
+- `--lj-min-ratio` has been deprecated
+
+environment with metaBAT2 v2
+```
+conda create -n envMetaBat2 -c bioconda -c conda-forge metabat2=2
+```
+- results in version 2.15
+
 Coninued with generating the depth file with ``` jgi_summarize_bam_contig_depths ``` from metaBat2
 <details>
 <summary> <b>Usage of jgi_summarize_bam_contig_depths</b></summary>
