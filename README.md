@@ -222,6 +222,22 @@ For the co-assembly we just gave the command multiple files.
 
 <summary>2. <b>analysis</b></summary>
 
+# Analysis with MetaMDBG_Manuscript
+
+python script that combines mapping, binning and checkM of assembled data
+
+clone git repository:
+```
+git clone https://github.com/GaetanBenoitDev/MetaMDBG_Manuscript.git
+```
+
+create conda environment with necessary tools:
+- python v3.9 (?)
+- minimap v2.21 / v.2.24
+- samtools v1.16.1
+- metabat2 v2
+- checkm v1.2.1
+
 # Binning of the assembled data
 
 Run minimap 2 in combination with samtools
