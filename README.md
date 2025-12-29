@@ -232,11 +232,24 @@ git clone https://github.com/GaetanBenoitDev/MetaMDBG_Manuscript.git
 ```
 
 create conda environment with necessary tools:
-- python v3.9 (?)
+- python v3.8
 - minimap v2.21 / v.2.24
 - samtools v1.16.1
 - metabat2 v2
-- checkm v1.2.1
+- checkm v1.2.1 (data for checkm is actually installed with checkm so it should be fine by default)
+
+```
+conda create -n manuscript \
+  -c conda-forge -c bioconda \
+  python=3.8 \
+  metabat2=2 \
+  checkm-genome=1.2.1 \
+  minimap2=2.21 \
+  samtools=1.16.1 \
+  wfmash=0.10.0 \
+  biopython \
+  pyani
+```
 
 # Binning of the assembled data
 
@@ -460,9 +473,29 @@ MetaBAT 2 (v2.12.1) using minContig 2500, minCV 1.0, minCVSum 1.0, maxP 95%, min
 ```
 And we have 791 binned files which when I undersatnd it correctly are our MAGs
 
+# Step 1
+
+<details>
+<summary> <b>Assess circular contigs</b></summary>
+
+  ```
+  MetaMDBG:
+  python3 ./run_singleContigs.py outputDir contigs.fasta.gz contigs.fasta.gz mdbg nbCores
+
+  Hifiasm_meta:
+  python3 ./run_singleContigs.py outputDir contigs.fasta.gz contigs.fasta.gz hifiasm nbCores
+
+  Metaflye:
+  python3 ./run_singleContigs.py outputDir contigs.fasta.gz assembly_info.txt metaflye nbCores
+  ```
+  
+  *currently running for mdbg* (see test_scripts/circularity.sh) 
+  - [ ] to do for hiafiasm + metaflye
+  > fixed wrong referencing of circularity for mdbg in their scripts
 </details>
 
-*coming soon*
+</details>
+
 
 useful insight into further steps of [analysis](https://github.com/GaetanBenoitDev/MetaMDBG_Manuscript)
 
