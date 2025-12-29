@@ -494,6 +494,15 @@ And we have 791 binned files which when I undersatnd it correctly are our MAGs
   > fixed wrong referencing of circularity for mdbg in their scripts
 </details>
 
+# Step 2
+
+<details>
+<summary> <b>Assess non-circular MAGs (binning)</b></summary>
+
+  *currently extracting all reads individually*
+
+</details>
+
 </details>
 
 
