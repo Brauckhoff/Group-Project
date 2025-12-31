@@ -473,7 +473,9 @@ MetaBAT 2 (v2.12.1) using minContig 2500, minCV 1.0, minCVSum 1.0, maxP 95%, min
 ```
 And we have 791 binned files which when I undersatnd it correctly are our MAGs
 
-# Step 1
+</details>
+
+## Step 1
 
 <details>
 <summary> <b>Assess circular contigs</b></summary>
@@ -501,9 +503,9 @@ hiafiasm get fasta
 awk '/^S/{print ">"$2;print $3}' SRR15275213/asm.p_ctg.gfa | gzip > SRR15275213/contigs.p_ctg.fasta.gz
 ```
 
-/details>
+</details>
 
-# Step 2
+## Step 2
 
 <details>
 <summary> <b>Assess non-circular MAGs (binning)</b></summary>
@@ -512,7 +514,7 @@ awk '/^S/{print ">"$2;print $3}' SRR15275213/asm.p_ctg.gfa | gzip > SRR15275213/
 
 </details>
 
-</details>
+
 
 
 useful insight into further steps of [analysis](https://github.com/GaetanBenoitDev/MetaMDBG_Manuscript)
