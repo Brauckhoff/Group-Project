@@ -168,7 +168,7 @@ build test:
 metaMDBG asm --out-dir ./SRR13128014/ --in-hifi /teachstor/share/groupprojectWS25/groupC/data/fastq/SRR13128014.fastq.gz --threads 16 --kmer-size 13
 ```
 - [x] does run? yes, it does \
-note: starts immediately start screen! \
+
 Output for SRR13128014 (can be accessed vie log file)
 ```
         Run time:                   2h 12min 22sec
@@ -489,17 +489,26 @@ And we have 791 binned files which when I undersatnd it correctly are our MAGs
   python3 ./run_singleContigs.py outputDir contigs.fasta.gz assembly_info.txt metaflye nbCores
   ```
   
-  *currently running for mdbg* (see test_scripts/circularity.sh) 
-  - [ ] to do for hiafiasm + metaflye
-  > fixed wrong referencing of circularity for mdbg in their scripts
-</details>
+  *currently running for hiafiasm* (see test_scripts/circularity.sh) 
+  - [ ] to do for hiafiasm
+  > fixed wrong referencing of circularity for mdbg in their scripts \
+
+extract the fasta from the produced graph in [hiafiams](https://hifiasm.readthedocs.io/en/latest/faq.html) (*see script getFasta.sh*)
+
+
+```
+hiafiasm get fasta
+awk '/^S/{print ">"$2;print $3}' SRR15275213/asm.p_ctg.gfa | gzip > SRR15275213/contigs.p_ctg.fasta.gz
+```
+
+/details>
 
 # Step 2
 
 <details>
 <summary> <b>Assess non-circular MAGs (binning)</b></summary>
 
-  *currently extracting all reads individually*
+  *in testing phase*
 
 </details>
 
