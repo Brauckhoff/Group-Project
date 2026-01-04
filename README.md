@@ -516,6 +516,7 @@ awk '/^S/{print ">"$2;print $3}' SRR15275213/asm.p_ctg.gfa | gzip > SRR15275213/
 
 ## RNA analysis with Barrnap and Infernal
 
+<details>
 environment with correct versions:
 ```
 conda create -n envRNAnalysis infernal=1.1.4 barrnap=0.9 -c bioconda -c conda-forge
@@ -556,7 +557,7 @@ barrnap --threads 16 --evalue 0.01 magFilename > outputFilename
 ```
 - `--threads [N]`: Number of threads/cores/CPUs to use (default '1')
 - `--evalue [n.n]`: Similarity e-value cut-off (default '1e-06')
-
+</details>
 
 useful insight into further steps of [analysis](https://github.com/GaetanBenoitDev/MetaMDBG_Manuscript)
 
