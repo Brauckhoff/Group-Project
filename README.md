@@ -514,7 +514,48 @@ awk '/^S/{print ">"$2;print $3}' SRR15275213/asm.p_ctg.gfa | gzip > SRR15275213/
 
 </details>
 
+## RNA analysis with Barrnap and Infernal
 
+environment with correct versions:
+```
+conda create -n envRNAnalysis infernal=1.1.4 barrnap=0.9 -c bioconda -c conda-forge
+```
+
+rna_analysis.sh: *work in progress*
+- runs both infernal and barrnap for all mag files and all tools
+
+### Infernal
+- tRNA
+
+Database Rfam:
+```
+wget ftp://ftp.ebi.ac.uk/pub/databases/Rfam/CURRENT/Rfam.cm.gz
+gunzip Rfam.cm.gz
+wget ftp://ftp.ebi.ac.uk/pub/databases/Rfam/CURRENT/Rfam.clanin
+mcpress Rfam.cm
+```
+
+code from paper:
+```
+cmscan --cpu 16 --cut_ga --rfam --nohmmonly --fmt 2 --tblout outputFilename --clanin Rfam.clanin Rfam.cm magFilename
+```
+-`--cpu <n>`: number of parallel CPU workers to use for multithreads
+- `--cut_ga`: use CM's GA gathering cutoffs as reporting thresholds
+- `--rfam`: set heuristic filters at Rfam-level (fast)
+- `--nohmmonly`: never run HMM-only mode, not even for models with 0 basepairs
+- `--fmt <n>`: set hit table format to \<n\>  (1\<=n\<=2)
+- `--tblout <f>`: save parseable table of hits to file \<s\>
+- `--clanin <f>`: read clan information from file \<f\>
+
+### Barrnap
+- rRNA
+
+code from paper:
+```
+barrnap --threads 16 --evalue 0.01 magFilename > outputFilename
+```
+- `--threads [N]`: Number of threads/cores/CPUs to use (default '1')
+- `--evalue [n.n]`: Similarity e-value cut-off (default '1e-06')
 
 
 useful insight into further steps of [analysis](https://github.com/GaetanBenoitDev/MetaMDBG_Manuscript)
