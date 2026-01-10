@@ -27,7 +27,7 @@ I would focus on the larger samples but mock is also an option - *to discuss*
 Here is a tutorial for the [download](https://erilu.github.io/python-fastq-downloader/)... also with possible python integration :D
 > we need fastq.gz file format 
 
-Downloaded sra-toolkit and created a script to download SRR codes like described under the 'download'-link (Removed all additional options). Can be found in the data folder. Usage:\
+Downloaded sra-toolkit (v3.2.1-ubuntu64) and created a script to download SRR codes like described under the 'download'-link (Removed all additional options). Can be found in the data folder. Usage:\
 `python3 fetch_sra_multi.py <SRR-ID1> <SRR-ID2> <...>`
 > fastq for all accession numbers are in shared folder ready to use
 
@@ -250,6 +250,201 @@ conda create -n manuscript \
   biopython \
   pyani
 ```
+
+useful insight into further steps of [analysis](https://github.com/GaetanBenoitDev/MetaMDBG_Manuscript)
+
+### Step 1
+
+<details>
+<summary> <b>Assess circular contigs</b></summary>
+
+  ```
+  MetaMDBG:
+  python3 ./run_singleContigs.py outputDir contigs.fasta.gz contigs.fasta.gz mdbg nbCores
+
+  Hifiasm_meta:
+  python3 ./run_singleContigs.py outputDir contigs.fasta.gz contigs.fasta.gz hifiasm nbCores
+
+  Metaflye:
+  python3 ./run_singleContigs.py outputDir contigs.fasta.gz assembly_info.txt metaflye nbCores
+  ```
+  
+> fixed wrong referencing of circularity for mdbg in their scripts \
+> 
+
+extract the fasta from the produced graph in [hiafiams](https://hifiasm.readthedocs.io/en/latest/faq.html) (*see script getFasta.sh*)
+
+
+```
+hiafiasm get fasta
+awk '/^S/{print ">"$2;print $3}' SRR15275213/asm.p_ctg.gfa | gzip > SRR15275213/contigs.p_ctg.fasta.gz
+```
+
+</details>
+
+### Step 2
+
+<details>
+<summary> <b>Assess non-circular MAGs (binning)</b></summary>
+
+  *in testing phase*
+
+</details>
+
+### Step 3
+
+<details>
+<summary> <b>Assess assembly completeness</b></summary>
+
+  *in testing phase*
+
+</details>
+
+</details>
+
+## RNA analysis with Barrnap and Infernal
+
+<details>
+<summary> <b>Barrnap and Infernal</b></summary>
+  
+environment with correct versions:
+```
+conda create -n envRNAnalysis infernal=1.1.4 barrnap=0.9 -c bioconda -c conda-forge
+```
+
+rna_analysis.sh: *work in progress*
+- runs both infernal and barrnap for all mag files and all tools
+
+### Infernal
+- tRNA
+
+Database Rfam:
+```
+wget ftp://ftp.ebi.ac.uk/pub/databases/Rfam/CURRENT/Rfam.cm.gz
+gunzip Rfam.cm.gz
+wget ftp://ftp.ebi.ac.uk/pub/databases/Rfam/CURRENT/Rfam.clanin
+mcpress Rfam.cm
+```
+
+code from paper:
+```
+cmscan --cpu 16 --cut_ga --rfam --nohmmonly --fmt 2 --tblout outputFilename --clanin Rfam.clanin Rfam.cm magFilename
+```
+-`--cpu <n>`: number of parallel CPU workers to use for multithreads
+- `--cut_ga`: use CM's GA gathering cutoffs as reporting thresholds
+- `--rfam`: set heuristic filters at Rfam-level (fast)
+- `--nohmmonly`: never run HMM-only mode, not even for models with 0 basepairs
+- `--fmt <n>`: set hit table format to \<n\>  (1\<=n\<=2)
+- `--tblout <f>`: save parseable table of hits to file \<s\>
+- `--clanin <f>`: read clan information from file \<f\>
+
+### Barrnap
+- rRNA
+
+code from paper:
+```
+barrnap --threads 16 --evalue 0.01 magFilename > outputFilename
+```
+- `--threads [N]`: Number of threads/cores/CPUs to use (default '1')
+- `--evalue [n.n]`: Similarity e-value cut-off (default '1e-06')
+
+</details>
+
+
+# Questions/Meetings
+
+*17th Nov*:
+- should we perform all analysis (some take > 30 days)? // repeat whole benchmark or only analysis with metaMDBG?\
+*Answer* - no metaMDBG is fine
+- only analyze PacBio or also OxfordNanopore?\
+*Answer* - start with PacBio and if time left do ONT
+- task: apply metaMDBG to all 5 data sets, check if we get same result?\
+*Answer* - yes we do that :), but start small with 2-3 datasets if time continue
+
+*08th Dec*:
+- Update what we have done: assembly for all data sets are running, one run interrupted with out an error message (run again)
+- Plan to check first parts of analysis for next week
+
+*15th Dec*:
+- Confirm how do we analyse the sample, check if we are on the right track?
+- ask, if we have to "determine the fraction of reads" and "estimate contig coverage across samples before binning" (p.10/1387, last paragraph)
+- Ask about single and co-assembly anaysis
+
+
+# Timeline (in weeks)
+
+**17th nov**
+- [x] get access to the cluster (server)!
+
+**24th nov**
+- [x] lay low and learn :)
+
+**01st dec**
+- [x] get tool installed on server
+- [x] script for data download
+- [x] get data
+- [x] code should be good to go for server
+
+**08th dec**
+- [x] NEXT MEETING :)
+- [x] do analyses and debug
+
+**15th dec**
+- [x] post processing and analysis
+
+**22th dec**
+- [x] continue analysis
+
+**29th dec**
+- [x] ...
+
+**05th jan**
+- [ ] debug and run analysis (*ongoing*)
+
+**12th jan**
+- [ ] finish practical tasks
+- [ ] write report 4-8 pages
+- [ ] prepare presentation
+
+**19th jan**
+- [ ] finish report
+- [ ] finish presentation
+
+
+# Sources
+
+Paper - https://doi.org/10.1038/s41587-023-01983-6
+
+# Software 
+
+- metaMDBG v0.3
+- hifiasm-meta v0.2-r058
+- metaflye v2.9-b1768
+- minimap2 v2.21-r1071
+- samtools v1.16.1
+- jgi_summarize_bam_contig_depths v2
+- metabat2 v2
+- CheckM v1.2.1
+- CheckV v1.0.1
+- dRep v3.2.2
+- Infernal v1.1.4
+- Barrnap v0.9
+- Viralverify v1.1
+- wfmash v0.10.0
+- R package fasttree v2.16
+- R package gtdbtk v2.1.0
+- R package Castor v1.7.3
+- R package ggtree v2.4.1
+- R package treeio v1.14.3
+- R package ggtreeExtra v1.0.2\
+costum Scripts:
+- https://github.com/GaetanBenoitDev/metaMDBG
+- https://github.com/GaetanBenoitDev/MetaMDBG_Manuscript
+
+https://static-content.springer.com/esm/art%3A10.1038%2Fs41587-023-01983-6/MediaObjects/41587_2023_1983_MOESM1_ESM.pdf
+
+<details>
+<summary>Old stuff</summary>
 
 # Binning of the assembled data
 
@@ -474,183 +669,3 @@ MetaBAT 2 (v2.12.1) using minContig 2500, minCV 1.0, minCVSum 1.0, maxP 95%, min
 And we have 791 binned files which when I undersatnd it correctly are our MAGs
 
 </details>
-
-## Step 1
-
-<details>
-<summary> <b>Assess circular contigs</b></summary>
-
-  ```
-  MetaMDBG:
-  python3 ./run_singleContigs.py outputDir contigs.fasta.gz contigs.fasta.gz mdbg nbCores
-
-  Hifiasm_meta:
-  python3 ./run_singleContigs.py outputDir contigs.fasta.gz contigs.fasta.gz hifiasm nbCores
-
-  Metaflye:
-  python3 ./run_singleContigs.py outputDir contigs.fasta.gz assembly_info.txt metaflye nbCores
-  ```
-  
-  *currently running for hiafiasm* (see test_scripts/circularity.sh) 
-  - [ ] to do for hiafiasm
-  > fixed wrong referencing of circularity for mdbg in their scripts \
-
-extract the fasta from the produced graph in [hiafiams](https://hifiasm.readthedocs.io/en/latest/faq.html) (*see script getFasta.sh*)
-
-
-```
-hiafiasm get fasta
-awk '/^S/{print ">"$2;print $3}' SRR15275213/asm.p_ctg.gfa | gzip > SRR15275213/contigs.p_ctg.fasta.gz
-```
-
-</details>
-
-## Step 2
-
-<details>
-<summary> <b>Assess non-circular MAGs (binning)</b></summary>
-
-  *in testing phase*
-
-</details>
-
-## RNA analysis with Barrnap and Infernal
-
-<details>
-<summary> <b>Barrnap and Infernal</b></summary>
-  
-environment with correct versions:
-```
-conda create -n envRNAnalysis infernal=1.1.4 barrnap=0.9 -c bioconda -c conda-forge
-```
-
-rna_analysis.sh: *work in progress*
-- runs both infernal and barrnap for all mag files and all tools
-
-### Infernal
-- tRNA
-
-Database Rfam:
-```
-wget ftp://ftp.ebi.ac.uk/pub/databases/Rfam/CURRENT/Rfam.cm.gz
-gunzip Rfam.cm.gz
-wget ftp://ftp.ebi.ac.uk/pub/databases/Rfam/CURRENT/Rfam.clanin
-mcpress Rfam.cm
-```
-
-code from paper:
-```
-cmscan --cpu 16 --cut_ga --rfam --nohmmonly --fmt 2 --tblout outputFilename --clanin Rfam.clanin Rfam.cm magFilename
-```
--`--cpu <n>`: number of parallel CPU workers to use for multithreads
-- `--cut_ga`: use CM's GA gathering cutoffs as reporting thresholds
-- `--rfam`: set heuristic filters at Rfam-level (fast)
-- `--nohmmonly`: never run HMM-only mode, not even for models with 0 basepairs
-- `--fmt <n>`: set hit table format to \<n\>  (1\<=n\<=2)
-- `--tblout <f>`: save parseable table of hits to file \<s\>
-- `--clanin <f>`: read clan information from file \<f\>
-
-### Barrnap
-- rRNA
-
-code from paper:
-```
-barrnap --threads 16 --evalue 0.01 magFilename > outputFilename
-```
-- `--threads [N]`: Number of threads/cores/CPUs to use (default '1')
-- `--evalue [n.n]`: Similarity e-value cut-off (default '1e-06')
-
-</details>
-
-useful insight into further steps of [analysis](https://github.com/GaetanBenoitDev/MetaMDBG_Manuscript)
-
-# Questions/Meetings
-
-*17th Nov*:
-- should we perform all analysis (some take > 30 days)? // repeat whole benchmark or only analysis with metaMDBG?\
-*Answer* - no metaMDBG is fine
-- only analyze PacBio or also OxfordNanopore?\
-*Answer* - start with PacBio and if time left do ONT
-- task: apply metaMDBG to all 5 data sets, check if we get same result?\
-*Answer* - yes we do that :), but start small with 2-3 datasets if time continue
-
-*08th Dec*:
-- Update what we have done: assembly for all data sets are running, one run interrupted with out an error message (run again)
-- Plan to check first parts of analysis for next week
-
-*15th Dec*:
-- Confirm how do we analyse the sample, check if we are on the right track?
-- ask, if we have to "determine the fraction of reads" and "estimate contig coverage across samples before binning" (p.10/1387, last paragraph)
-- Ask about single and co-assembly anaysis
-
-
-# Timeline (in weeks)
-
-**17th nov**
-- [x] get access to the cluster (server)!
-
-**24th nov**
-- [x] lay low and learn :)
-
-**01st dec**
-- [x] get tool installed on server
-- [x] script for data download
-- [x] get data
-- [x] code should be good to go for server
-
-**08th dec**
-- [x] NEXT MEETING :)
-- [ ] do analyses and debug
-
-**15th dec**
-- [ ] post processing and analysis
-
-**22th dec**
-- [ ] continue analysis
-
-**29th dec**
-- [ ] be ready to visualize
-
-**05th jan**
-- [ ] finish practical tasks
-
-**12th jan**
-- [ ] write report 4-8 pages
-- [ ] prepare presentation
-
-**19th jan**
-- [ ] finish report
-- [ ] finish presentation
-
-
-# Sources
-
-Paper - https://doi.org/10.1038/s41587-023-01983-6
-
-# Software 
-
-- metaMDBG v0.3
-- hifiasm-meta v0.2-r058
-- metaflye v2.9-b1768
-- minimap2 v2.21-r1071
-- samtools v1.16.1
-- jgi_summarize_bam_contig_depths v2
-- metabat2 v2
-- CheckM v1.2.1
-- CheckV v1.0.1
-- dRep v3.2.2
-- Infernal v1.1.4
-- Barrnap v0.9
-- Viralverify v1.1
-- wfmash v0.10.0
-- R package fasttree v2.16
-- R package gtdbtk v2.1.0
-- R package Castor v1.7.3
-- R package ggtree v2.4.1
-- R package treeio v1.14.3
-- R package ggtreeExtra v1.0.2\
-costum Scripts:
-- https://github.com/GaetanBenoitDev/metaMDBG
-- https://github.com/GaetanBenoitDev/MetaMDBG_Manuscript
-
-https://static-content.springer.com/esm/art%3A10.1038%2Fs41587-023-01983-6/MediaObjects/41587_2023_1983_MOESM1_ESM.pdf
