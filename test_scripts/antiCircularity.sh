@@ -3,7 +3,7 @@
 pre="/teachstor/share/groupprojectWS25/groupC"
 
 # MDBG
-for d in assembled/ERR* assembled/SRR* assembled/co*; do
+for d in assembled/ERR* assembled/SRR*; do
    
    contig="$d/contigs.fasta.gz"
    ID=$(basename -- "$d")
@@ -17,7 +17,7 @@ done
 
 
 # FLYE
-for d in assembled_flye/ERR* assembled_flye/SRR* assembled_flye/hum*; do
+for d in assembled_flye/ERR* assembled_flye/SRR*; do
    
    contig="$d/assembly.fasta"
    ID=$(basename -- "$d")
@@ -31,7 +31,7 @@ done
 
 
 # HIFI
-for d in assembled_hifi/ERR* assembled_hifi/SRR* assembled_hifi/*_hum*; do
+for d in assembled_hifi/ERR* assembled_hifi/SRR*; do
    
    contig="$d/contigs.p_ctg.fasta.gz"
    ID=$(basename -- "$d")
