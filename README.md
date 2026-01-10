@@ -81,11 +81,9 @@ conda install bioconda::minimap2
 ```
 conda install bioconda::metabat2
 ```
-CheckM got a newer version with differing methods, its recommended to try both so we'll do :) (took a while) \
-[old CheckM](https://github.com/Ecogenomics/CheckM) \
-[new CheckM2](https://github.com/chklovski/CheckM2)
+[CheckM](https://github.com/Ecogenomics/CheckM) \
 ```
-conda install bioconda::checkm-genome bioconda::checkm2
+conda install bioconda::checkm-genome
 ```
 [viralverify](https://github.com/ablab/viralVerify)
 ```
@@ -126,6 +124,8 @@ conda create -n gp \
 <details>
 
 <summary>1. <b>avengers assemble</b></summary>
+
+# MetaMDBG - v1.2
 
 do assemble for all metagenomes + co-assemblies \
 command they used:
@@ -181,6 +181,7 @@ Output for SRR13128014 (can be accessed vie log file)
 
 ```
 wrote a script that could run all (small modification needed)
+> created `assembly.sh` ; and needed to rerun for SRR14289618 cause of path issues (`assembly2.sh`)
 
 for co-assembly just write the fastq.gz after one another: `<fastq1> <fastq2> <...>`
 
@@ -268,15 +269,17 @@ useful insight into further steps of [analysis](https://github.com/GaetanBenoitD
   Metaflye:
   python3 ./run_singleContigs.py outputDir contigs.fasta.gz assembly_info.txt metaflye nbCores
   ```
-  
-> fixed wrong referencing of circularity for mdbg in their scripts \
-> 
+bash script of our used version - `circularity.sh` 
+
+> fixed wrong referencing of circularity for mdbg in their scripts: \
+> countCircularContigs.py & computeMAG_singleContigs.py \
+> changed the included countHicanu() function into countMDBG()
+
+<br>
 
 extract the fasta from the produced graph in [hiafiams](https://hifiasm.readthedocs.io/en/latest/faq.html) (*see script getFasta.sh*)
 
-
 ```
-hiafiasm get fasta
 awk '/^S/{print ">"$2;print $3}' SRR15275213/asm.p_ctg.gfa | gzip > SRR15275213/contigs.p_ctg.fasta.gz
 ```
 
@@ -287,7 +290,24 @@ awk '/^S/{print ">"$2;print $3}' SRR15275213/asm.p_ctg.gfa | gzip > SRR15275213/
 <details>
 <summary> <b>Assess non-circular MAGs (binning)</b></summary>
 
-  *in testing phase*
+```
+MetaMDBG:
+python3 ./computeMAG_binning.py outputDir contigs.fasta.gz contigs.fasta.gz mdbg minCircularContigLength nbCores reads_1.fastq.gz reads_2.fastq.gz... --circ
+
+Hifiasm_meta:
+python3 ./computeMAG_binning.py outputDir contigs.fasta.gz contigs.fasta.gz hifiasm minCircularContigLength nbCores reads_1.fastq.gz reads_2.fastq.gz... --circ
+
+Metaflye:
+python3 ./computeMAG_binning.py outputDir contigs.fasta.gz assembly_info.txt metaflye minCircularContigLength nbCores reads_1.fastq.gz reads_2.fastq.gz... --circ
+```
+
+bash script used is `antiCircularity.sh` and `antiCircularity-CA.sh` \
+(note multiple fastq can be targeted with e.g. $fastq/SRR15*)
+
+<br>
+
+> `_computeMAG_binning_extractCircularBin.py` was updated for mdbg in the same manner as mentioned before to extract circularity characteristic; \
+> needed to command out deletion of temp files for adhifi co-assembly on mdbg
 
 </details>
 
@@ -296,7 +316,27 @@ awk '/^S/{print ">"$2;print $3}' SRR15275213/asm.p_ctg.gfa | gzip > SRR15275213/
 <details>
 <summary> <b>Assess assembly completeness</b></summary>
 
-  *in testing phase*
+```
+python3 ./computeReferenceCompleteness.py referenceFile contigs.fasta.gz contigs.fasta.gz mdbg tmpDir 0.99 nbCores
+```
+
+needed to update several aspects and functional script used is called `debugCompleteness.py` 
+
+- removed 'conda -n pyani' as this specifies the environment 
+- skipped files added to reference that are of size 0 from wfmash
+- changed openAni function to correct if statement that takes only first element of header and compares it to mapped contigs
+- note: metaflye assembly.fasta needs to be compressed with gzip
+
+<br>
+
+referenceFile creation after downloading mock reference from [X](https://s3.amazonaws.com/zymo-files/BioPool/D6331.refseq.zip)
+```
+find references/mock_genomes/zymo/D6331.refseq -type f -iname "*.fasta" > ./references/mock_genomes/zymo/referenceFile.txt
+```
+- needed to change some filenames as they contained space, which caused errors
+- corrected fasta format in: ssrRNAs/Bifidobacterium_adolescentis_16S.fasta
+- rename ssrRNA of Prevotella_corporis to Prevotella_corporis_16S otherwise overwrite with genome seq
+
 
 </details>
 
