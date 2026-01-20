@@ -342,6 +342,67 @@ find references/mock_genomes/zymo/D6331.refseq -type f -iname "*.fasta" > ./refe
 
 </details>
 
+## Identify plasmids and viruses
+
+<details>
+<summary> <b>ViralVerify and checkV</b></summary>
+
+To identify plasmids and viruses viralVerify and checkV was used. 
+For both tools the versions from the paper were used.  
+For viralVerify the basic enviroment of metaMDBG was just extended by using: 
+```
+conda install bioconda::viralverify
+```
+This automatically installed the version 1.1 which is the one required from the paper. 
+
+Create enviroment with the correct versions for checkV (here a separate enviroment was necessary to adapt the python version): 
+```
+conda create -n checkv_env python=3.10
+conda activate checkv_env
+conda install -c conda-forge -c bioconda checkv=1.0.1
+```
+
+Download the necessary databases: 
+
+```
+viralverify download-db /teachstor/share/groupprojectWS25/groupC/references/viralV
+```
+```
+checkv download_database /teachstor/share/groupprojectWS25/groupC/references/checkv_db
+```
+
+Unfortunately it is not very clear from the paper on which files the identification of viruses and plasmids were run. We first used the binned files, which were the outputs of metaBat2 form the metaMDBG manuscripts (to assess all binned files a script was used), but the results were far away from the results of the paper. Thus, we decided to use the assembled fasta files. 
+For metaMDBG and hifiasm-meta the fasta files were unzipped and than used. Here is a list of the files used from each assembler:
+
+```
+/teachstor/share/groupprojectWS25/groupC/assembled/<SAMPLE_ID>/contigs.fasta
+/teachstor/share/groupprojectWS25/groupC/assembled_flye/<SAMPLE_ID>/assembly.fasta
+/teachstor/share/groupprojectWS25/groupC/assembled_hifi/<SAMPLE_ID>/contigs.p_ctg.fasta
+```
+
+The command of viralVerify was further used as stated in the paper: 
+```
+viralverify -f <INPUT_FILE> -o <OUTPUT_FOLDER> --hmm references/viralV/nbc_hmms.hmm -t 16 --thr 5
+```
+For example: 
+```
+viralverify -f /teachstor/share/groupprojectWS25/groupC/assembled_flye/ERR10905741/assembly.fasta -o viralverify/flye/ERR10905741_flye --hmm references/viralV/nbc_hmms.hmm -t 16 --thr 5
+```
+
+After running these files we used checkV to asses the quality. 
+Here we used a small script attached to this GitHub repository. 
+```
+ ./checkV_analysis.sh <SAMPLE_ID> <ASSEMBLER>
+```
+For example
+```
+ ./checkV_analysis.sh ERR10905741 flye
+```
+
+
+
+</details>
+
 ## RNA analysis with Barrnap and Infernal
 
 <details>
