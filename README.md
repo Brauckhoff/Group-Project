@@ -189,12 +189,29 @@ for co-assembly just write the fastq.gz after one another: `<fastq1> <fastq2> <.
 
 <summary>2. <b>MetaFlye v.2.9</b></summary>
 
-command used (example): 
+command from the paper:
 ```
-/usr/bin/time -v -o ./assembled_flye/times/SRR15275212.log flye --pacbio-hifi ./data/fastq/SRR15275212.fastq.gz --out-dir ./assembled_flye/SRR15275212/ --threads 16 --plasmids --meta
+flye --pacbio-hifi reads --out-dir outputDir --threads 16 --plasmids --meta
+```
+- `--pacbio-hifi`:
+- `--out-dir`:
+- `--threads`:
+- `--plasmids`:
+- `--meta`:
+
+command used: 
+```
+/usr/bin/time -v -o ./assembled_flye/times/<assembly>.log flye --pacbio-hifi <reads> --out-dir ./assembled_flye/<dataset_name>/ --threads 16 --plasmids --meta
 ```
 - `/usr/bin/time` used to measure time and memory used for assembly
 - `--plasmid` not available anymore
+- `--threads`: different number, depending on threads used for metaMDBG
+
+command used for co-assemblies:
+```
+/usr/bin/time -v -o ./assembled_flye/times/<co-assembly>.log flye --pacbio-hifi <reads> <reads> ... <reads> --out-dir ./assembled_flye/<co-assembly_name>/ --threads 32 --plasmids --meta
+```
+
 
 </details>
 
@@ -356,6 +373,13 @@ find references/mock_genomes/zymo/D6331.refseq -type f -iname "*.fasta" > ./refe
 task: **determine the fraction of HiFi reads that were mapped to MAGs**
 
 1. use Minimap2 (v2.21) to map the raw reads to the corresponding assembly
+
+command from the paper:
+```
+minimap2 -x asm20
+```
+- `-x`:
+- `asm20`:
 
 ```
 minimap2 -x asm20 -t 16 <assembly> <reads> > <dataset>.paf
