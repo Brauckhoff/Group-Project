@@ -461,19 +461,15 @@ To asses the quality and thereby the results of checkV we used the script 'virus
 
 ## RNA analysis with Barrnap and Infernal
 
-<details>
-<summary> <b>Barrnap and Infernal</b></summary>
+task: get the precentage of circular contigs contain the expected RNA genes
   
 environment with correct versions:
 ```
 conda create -n envRNAnalysis infernal=1.1.4 barrnap=0.9 -c bioconda -c conda-forge
 ```
 
-rna_analysis.sh: *work in progress*
-- runs both infernal and barrnap for all mag files and all tools
-
 ### Infernal
-- tRNA
+- for tRNA gene prediction
 
 Database Rfam:
 ```
@@ -504,8 +500,6 @@ barrnap --threads 16 --evalue 0.01 magFilename > outputFilename
 ```
 - `--threads [N]`: Number of threads/cores/CPUs to use (default '1')
 - `--evalue [n.n]`: Similarity e-value cut-off (default '1e-06')
-
-</details>
 
 
 # Questions/Meetings
