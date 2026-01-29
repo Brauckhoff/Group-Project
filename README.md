@@ -536,7 +536,10 @@ combine all rRNA gene prediction results in one file: see shell script `rRNA.sh`
 - continue only with contigs that are near-complete (based on checkkM quality information): completeness >= 90 and contamination <= 5
 - see Python script: `rna_analysis.py`
 
-4. 
+4. get percentage of circular contigs that have the expected RNA genes
+- divide number of circular contigs with expected RNA gene by the total number of circular contigs
+
+5. plot data
 
 </details>
 
