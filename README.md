@@ -123,7 +123,7 @@ conda create -n gp \
 
 <details>
 
-<summary>1. <b>MetaMDBG - v1.2</b></summary>
+<summary>1. <b>MetaMDBG v1.2</b></summary>
 
 do assemble for all metagenomes + co-assemblies \
 command they used:
@@ -187,7 +187,7 @@ for co-assembly just write the fastq.gz after one another: `<fastq1> <fastq2> <.
 
 <details>
 
-<summary>2. <b>MetaFlye v.2.9.6</b></summary>
+<summary>2. <b>MetaFlye v.2.9</b></summary>
 
 command used (example): 
 ```
@@ -350,9 +350,10 @@ find references/mock_genomes/zymo/D6331.refseq -type f -iname "*.fasta" > ./refe
 </details>
 
 
-</details>
-
+<details>
 <summary><b>read mapping</b></summary>
+
+task: **determine the fraction of HiFi reads that were mapped to MAGs**
 
 1. use Minimap2 (v2.21) to map the raw reads to the corresponding assembly
 
@@ -365,7 +366,14 @@ in case of co-assemblies:
 minimap2 -x asm20 -t 16 <co-assembly> <read_1> <read_2> ... <read_n> > <coassembly>.paf
 ```
 
-2. 
+2. filter out read mappings were the alignment length is less then 80% of the reads length
+- see Python script `filterMappedReads.py`
+
+3. for each read, choose the mapped contig with the longest alignment length (choose randomly if two contigs have the same alignment length for the same read)
+- see Python script `filterMappedReads.py`
+
+4. 
+
 
 
 </details>
