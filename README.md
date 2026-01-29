@@ -351,7 +351,7 @@ find references/mock_genomes/zymo/D6331.refseq -type f -iname "*.fasta" > ./refe
 
 
 <details>
-<summary><b>read mapping</b></summary>
+<summary><b>read mapping with `minimap2 -x asm20`</b></summary>
 
 task: **determine the fraction of HiFi reads that were mapped to MAGs**
 
@@ -372,7 +372,25 @@ minimap2 -x asm20 -t 16 <co-assembly> <read_1> <read_2> ... <read_n> > <coassemb
 3. for each read, choose the mapped contig with the longest alignment length (choose randomly if two contigs have the same alignment length for the same read)
 - see Python script `filterMappedReads.py`
 
-4. 
+output: pandas.DataFrame with 
+
+4. get all contigs that are part of MAGs, as well as their quality information (checkM-completeness and checkM-contamination)
+- see Shell script `getQualityInformationForMapping.sh`
+
+5. get subset of contigs that part of MAGs and the filtered list of the read mapping
+- see Python script `....py`
+
+6. calculate fraction of reads that were mapped to MAGs
+
+get total number of reads:
+- see Shell script: `getReadCount.sh`
+
+divide number of reads that were mapped to a MAG by the number of total reads
+- see Python script: `....py`
+
+8. plot fraction of reads that were mapped to MAGs
+- see Python script: `....py`
+  - separate mapped reads based on checkM quality information
 
 
 
