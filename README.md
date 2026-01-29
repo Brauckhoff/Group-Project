@@ -349,6 +349,27 @@ find references/mock_genomes/zymo/D6331.refseq -type f -iname "*.fasta" > ./refe
 
 </details>
 
+
+</details>
+
+<summary><b>read mapping</b></summary>
+
+1. use Minimap2 (v2.21) to map the raw reads to the corresponding assembly
+
+```
+minimap2 -x asm20 -t 16 <assembly> <reads> > <dataset>.paf
+```
+
+in case of co-assemblies:
+```
+minimap2 -x asm20 -t 16 <co-assembly> <read_1> <read_2> ... <read_n> > <coassembly>.paf
+```
+
+2. 
+
+
+</details>
+
 ## Identify plasmids and viruses
 
 <details>
