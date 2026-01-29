@@ -461,7 +461,10 @@ To asses the quality and thereby the results of checkV we used the script 'virus
 
 ## RNA analysis with Barrnap and Infernal
 
-task: get the precentage of circular contigs contain the expected RNA genes
+<details>
+<summary><b>Barrnap and Infernal</b></summary>
+
+task: get the precentage of circular contigs that contain the expected RNA genes
   
 environment with correct versions:
 ```
@@ -483,7 +486,7 @@ code from paper:
 ```
 cmscan --cpu 16 --cut_ga --rfam --nohmmonly --fmt 2 --tblout outputFilename --clanin Rfam.clanin Rfam.cm magFilename
 ```
--`--cpu <n>`: number of parallel CPU workers to use for multithreads
+- `--cpu <n>`: number of parallel CPU workers to use for multithreads
 - `--cut_ga`: use CM's GA gathering cutoffs as reporting thresholds
 - `--rfam`: set heuristic filters at Rfam-level (fast)
 - `--nohmmonly`: never run HMM-only mode, not even for models with 0 basepairs
@@ -491,8 +494,16 @@ cmscan --cpu 16 --cut_ga --rfam --nohmmonly --fmt 2 --tblout outputFilename --cl
 - `--tblout <f>`: save parseable table of hits to file \<s\>
 - `--clanin <f>`: read clan information from file \<f\>
 
+use `cmscan` on all circular contigs that don't have to be binned with MetaBat2:
+```
+cmscan --cpu 32 --cut_ga --rfam --nohmmonly --fmt 2 --tblout <outputFilename>.gff --clanin Rfam.clanin Rfam.cm <bin>.fa
+```
+- structure of output filename: `<assembler>_<assembly>_tRNA.txt`
+
+combine all tRNA gene prediction results in one file: see shell script `tRNA.sh`
+
 ### Barrnap
-- rRNA
+- for rRNA gene prediction
 
 code from paper:
 ```
@@ -500,6 +511,34 @@ barrnap --threads 16 --evalue 0.01 magFilename > outputFilename
 ```
 - `--threads [N]`: Number of threads/cores/CPUs to use (default '1')
 - `--evalue [n.n]`: Similarity e-value cut-off (default '1e-06')
+
+use `barrnap` on all circular contigs that don't have to be binned with MetaBat2:
+```
+barrnap --threads 16 --evalue 0.01 <bin>.fa > <outputFilename>.gff
+```
+- structure of output file name: `<assembler>_<assembly>_<rRNA_type>.txt`
+
+combine all rRNA gene prediction results in one file: see shell script `rRNA.sh`
+
+
+### Analysis of RNA prediction
+1. get checkM quality analysis
+- for all circular contigs that don't have to be binned with MetaBat2
+- see Shell script: `getContigInfo.sh`
+  - all quality information is contained in one output file
+
+2. combine all data into one DataFrame
+- see Python script: `RNA_data.py`
+- see Table 12 (in Excel file)
+
+3. filtering circular contigs
+- ignore contigs that don't have the expected RNA genes: 1 copy of (each) 5S, 16S and 23S rRNA and 18 copies of tRNA
+- continue only with contigs that are near-complete (based on checkkM quality information): completeness >= 90 and contamination <= 5
+- see Python script: `rna_analysis.py`
+
+4. 
+
+</details>
 
 
 # Questions/Meetings
