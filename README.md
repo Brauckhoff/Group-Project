@@ -119,13 +119,11 @@ conda create -n gp \
 
 </details>
 
-## Next steps
+## Assembler use
 
 <details>
 
-<summary>1. <b>avengers assemble</b></summary>
-
-# MetaMDBG - v1.2
+<summary>1. <b>MetaMDBG - v1.2</b></summary>
 
 do assemble for all metagenomes + co-assemblies \
 command they used:
@@ -185,8 +183,11 @@ wrote a script that could run all (small modification needed)
 
 for co-assembly just write the fastq.gz after one another: `<fastq1> <fastq2> <...>`
 
+</details>
 
-# MetaFlye
+<details>
+
+<summary>2. <b>MetaFlye v.2.9</b></summary>
 
 command used: 
 ```
@@ -194,8 +195,11 @@ command used:
 ```
 - --plasmid not available anymore
 
+</details>
 
-# hifiasm-meta
+<details>
+
+<summary>3. <b>Hifiasm-meta v.0.3</b></summary>
 
 Create enviroment: I let run one command after the other
 ```
@@ -204,7 +208,8 @@ conda activate hifiasm-meta-new
 conda install bioconda::hifiasm_meta
 ```
 
-In case we are interested in the version: ha base version: 0.13-r308  
+In case we are interested in the version:   
+ha base version: 0.13-r308  
 hamt version: 0.3-r079
 
 Command used: 
@@ -219,11 +224,12 @@ For the co-assembly we just gave the command multiple files.
 
 </details>
 
+## Analysis with MetaMDBG_Manuscript
+
 <details>
 
-<summary>2. <b>analysis</b></summary>
+<summary><b>analysis - mapping, binning and checkM</b></summary>
 
-# Analysis with MetaMDBG_Manuscript
 
 python script that combines mapping, binning and checkM of assembled data
 
@@ -355,11 +361,10 @@ conda install bioconda::viralverify
 ```
 This automatically installed the version 1.1 which is the one required from the paper. 
 
-Create enviroment with the correct versions for checkV (here a separate enviroment was necessary to adapt the python version): 
+Create enviroment with the correct versions for checkV (here a separate enviroment was necessary to adapt the python version). Further we needed a specific diamond version as there was a problem with using diamond inside checkV: 
 ```
-conda create -n checkv_env python=3.10
+conda create -n checkv_env python=3.10 checkv=1.0.1 diamond=2.0.8 -c conda-forge -c bioconda
 conda activate checkv_env
-conda install -c conda-forge -c bioconda checkv=1.0.1
 ```
 
 Download the necessary databases: 
@@ -399,6 +404,9 @@ For example
  ./checkV_analysis.sh ERR10905741 flye
 ```
 
+To asses the results from viralVerify we extracted the *_result_table.csv for each sample and counted the amount of plasmid (also including 'Uncertain - plasmid or chromosomal') and the amount of viruses (also including 'Uncertain - viral or bacterial') as well as the amount for cicular plasimd and viruses. 
+
+To asses the quality and thereby the results of checkV we used the script 'virus_analysis.py' and used the output to check how many high quality viral contigs were actual circular in the original assembly. 
 
 
 </details>
