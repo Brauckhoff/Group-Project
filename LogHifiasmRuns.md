@@ -256,3 +256,33 @@ Fitting performed in 58.41 seconds.
         Page size (bytes): 4096
         Exit status: 0
 ```
+
+## ATCC Mock community
+Failed, as there isn't enough RAM available
+
+```
+Command terminated by signal 11
+        Command being timed: "hifiasm_meta -t 16 -o assembled_hifi/SRR11606871/asm data/fastq/SRR11606871.fastq.gz"
+        User time (seconds): 7840206.58
+        System time (seconds): 191659.59
+        Percent of CPU this job got: 1577%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 141:28:25
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 797485032
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 14668
+        Minor (reclaiming a frame) page faults: 70824801914
+        Voluntary context switches: 118678229
+        Involuntary context switches: 18425422
+        Swaps: 0
+        File system inputs: 88186672
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+```
