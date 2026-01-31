@@ -379,6 +379,7 @@ minimap2 -x asm20
 ```
 - `-x asm20`: preset; asm-to-ref mapping, for ~5% sequence divergence (-k19 -w10 -U50,500 --rmq -r1k,100k -g10k -A1 -B4 -O6,26 -E2,1 -s200 -z200 -N50)
 
+command used:
 ```
 minimap2 -x asm20 -t 16 <assembly> <reads> > <dataset>.paf
 ```
@@ -394,18 +395,21 @@ minimap2 -x asm20 -t 16 <co-assembly> <read_1> <read_2> ... <read_n> > <coassemb
 3. for each read, choose the mapped contig with the longest alignment length (choose randomly if two contigs have the same alignment length for the same read)
 - see Python script `filterMappedReads.py`
 
-output: pandas.DataFrame with 
+The output csv file of `filterMappedReads.py`: contig name (read was mapped to), assembly tool, assembly name.
 
 4. get all contigs that are part of MAGs, as well as their quality information (checkM-completeness and checkM-contamination)
 - see Shell script `getQualityInformationForMapping.sh`
 
-5. get subset of contigs that part of MAGs and the filtered list of the read mapping
+5. get subset of contigs that are part of MAGs and the filtered list of the read mapping
 - see Python script `....py`
 
 6. calculate fraction of reads that were mapped to MAGs
 
 get total number of reads:
-- see Shell script: `getReadCount.sh`
+```
+count = $(gunzip -c "<dataset>" | wc -l)
+echo "$((count / 4))"
+```
 
 divide number of reads that were mapped to a MAG by the number of total reads
 - see Python script: `....py`
