@@ -193,18 +193,17 @@ command from the paper:
 ```
 flye --pacbio-hifi reads --out-dir outputDir --threads 16 --plasmids --meta
 ```
-- `--pacbio-hifi`:
-- `--out-dir`:
-- `--threads`:
-- `--plasmids`:
-- `--meta`:
+- `--pacbio-hifi`: PacBio HiFi reads (<1% error)
+- `--out-dir`: Output directory
+- `--threads`: number of parallel threads
+- `--plasmids`: unused (retained for backward compatibility) -> not available anymore
+- `--meta`: metagenome / uneven coverage mode
 
 command used: 
 ```
 /usr/bin/time -v -o ./assembled_flye/times/<assembly>.log flye --pacbio-hifi <reads> --out-dir ./assembled_flye/<dataset_name>/ --threads 16 --plasmids --meta
 ```
 - `/usr/bin/time` used to measure time and memory used for assembly
-- `--plasmid` not available anymore
 - `--threads`: different number, depending on threads used for metaMDBG
 
 command used for co-assemblies:
@@ -378,8 +377,7 @@ command from the paper:
 ```
 minimap2 -x asm20
 ```
-- `-x`:
-- `asm20`:
+- `-x asm20`: preset; asm-to-ref mapping, for ~5% sequence divergence (-k19 -w10 -U50,500 --rmq -r1k,100k -g10k -A1 -B4 -O6,26 -E2,1 -s200 -z200 -N50)
 
 ```
 minimap2 -x asm20 -t 16 <assembly> <reads> > <dataset>.paf
