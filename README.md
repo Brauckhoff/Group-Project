@@ -394,7 +394,7 @@ The read mappings are filtered. All mappings, where the alignment length is less
 - the output csv file of `filterMappedReads.py`: contig name (read was mapped to), count (mapped reads per contig), assembly tool, assembly name
 
 The names of all contigs that are part of MAGs, as well as their checkm quality information (checkM-completeness and checkM-contamination), are stored. 
-- see Shell script `getQualityInformationForMapping.sh`
+- see Shell script `getMAGcontigs.sh`
 
 The subset of the filtered read mappings and the MAG contigs is computed to get the number of reads mapped to MAGs
 - see Python script `....py`
