@@ -389,9 +389,9 @@ in case of co-assemblies:
 minimap2 -x asm20 -t 16 <co-assembly> <read_1> <read_2> ... <read_n> > <coassembly>.paf
 ```
 
-The read mappings are filtered. All mappings where the alignment length is less than 80% of the read length are filtered out. For each read only one contig (the one with the longest alignment length) is kept (random choice if two contigs have the same alignment length.
+The read mappings are filtered. All mappings, where the alignment length is less than 80% of the read length are filtered out. For each read only one contig (the one with the longest alignment length) is kept (random choice if two contigs have the same alignment length).
 - see Python script `filterMappedReads.py`
-- the output csv file of `filterMappedReads.py`: contig name (read was mapped to), assembly tool, assembly name
+- the output csv file of `filterMappedReads.py`: contig name (read was mapped to), count (mapped reads per contig), assembly tool, assembly name
 
 The names of all contigs that are part of MAGs, as well as their checkm quality information (checkM-completeness and checkM-contamination), are stored. 
 - see Shell script `getQualityInformationForMapping.sh`
