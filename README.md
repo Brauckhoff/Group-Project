@@ -369,7 +369,7 @@ find references/mock_genomes/zymo/D6331.refseq -type f -iname "*.fasta" > ./refe
 <details>
 <summary><b>read mapping with `minimap2 -x asm20`</b></summary>
 
-task: **determine the fraction of HiFi reads that were mapped to MAGs**
+task: determine the fraction of HiFi reads that were mapped to MAGs
 
 Minimap2 (v2.21) is used to map the raw reads to the corresponding assembly.
 
@@ -406,7 +406,7 @@ The fraction of read that were mapped to MAGs compared to the total number of re
 echo "$(( $(gunzip -c "<dataset>" | wc -l) / 4))"
 ```
 
-divide number of reads that were mapped to a MAG by the number of total reads
+- divide number of reads that were mapped to a MAG by the number of total reads
 - see Python script: `....py`
 
 </details>
@@ -542,7 +542,7 @@ combine all rRNA gene prediction results in one file: see shell script `rRNA.sh`
 - see Shell script: `getContigInfo.sh`
   - all quality information is contained in one output file
 
-2. combine all data into one DataFrame
+2. combine all the data (rRNA, tRNA, quality) into one DataFrame
 - see Python script: `RNA_data.py`
 - see Table 12 (in Excel file)
 
@@ -553,8 +553,6 @@ combine all rRNA gene prediction results in one file: see shell script `rRNA.sh`
 
 4. get percentage of circular contigs that have the expected RNA genes
 - divide number of circular contigs with expected RNA gene by the total number of circular contigs
-
-5. plot data
 
 </details>
 
