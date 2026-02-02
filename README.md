@@ -515,7 +515,7 @@ cmscan --cpu 32 --cut_ga --rfam --nohmmonly --fmt 2 --tblout <outputFilename>.gf
 ```
 - structure of output filename: `<assembler>_<assembly>_tRNA.txt`
 
-combine all tRNA gene prediction results in one file: see shell script `tRNA.sh`
+combine all tRNA gene prediction results in one file: see shell script `rRNA_tRNA.sh`
 
 ### Barrnap
 - for rRNA gene prediction
@@ -533,7 +533,7 @@ barrnap --threads 16 --evalue 0.01 <bin>.fa > <outputFilename>.gff
 ```
 - structure of output file name: `<assembler>_<assembly>_<rRNA_type>.txt`
 
-combine all rRNA gene prediction results in one file: see shell script `rRNA.sh`
+combine all rRNA gene prediction results in one file: see shell script `rRNA_tRNA.sh`
 
 
 ### Analysis of RNA prediction
