@@ -397,7 +397,7 @@ The names of all contigs that are part of MAGs, as well as their checkm quality 
 - see Shell script `getMAGcontigs.sh`
 
 The subset of the filtered read mappings and the MAG contigs is computed to get the number of reads mapped to MAGs
-- see Python script `....py`
+- see Python script `mapping_analysis.py`
 
 The fraction of read that were mapped to MAGs compared to the total number of reads used for the corresponding assembly was computed.
 
@@ -407,7 +407,7 @@ echo "$(( $(gunzip -c "<dataset>" | wc -l) / 4))"
 ```
 
 - divide number of reads that were mapped to a MAG by the number of total reads
-- see Python script: `....py`
+- see Python script: `mapping_analysis.py`
 
 </details>
 
