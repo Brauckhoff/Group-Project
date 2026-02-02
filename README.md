@@ -371,7 +371,7 @@ find references/mock_genomes/zymo/D6331.refseq -type f -iname "*.fasta" > ./refe
 
 task: **determine the fraction of HiFi reads that were mapped to MAGs**
 
-1. use Minimap2 (v2.21) to map the raw reads to the corresponding assembly
+Minimap2 (v2.21) is used to map the raw reads to the corresponding assembly.
 
 command from the paper:
 ```
@@ -389,36 +389,25 @@ in case of co-assemblies:
 minimap2 -x asm20 -t 16 <co-assembly> <read_1> <read_2> ... <read_n> > <coassembly>.paf
 ```
 
-2. filter out read mappings were the alignment length is less then 80% of the reads length
+The read mappings are filtered. All mappings where the alignment length is less than 80% of the read length are filtered out. For each read only one contig (the one with the longest alignment length) is kept (random choice if two contigs have the same alignment length.
 - see Python script `filterMappedReads.py`
+- the output csv file of `filterMappedReads.py`: contig name (read was mapped to), assembly tool, assembly name
 
-3. for each read, choose the mapped contig with the longest alignment length (choose randomly if two contigs have the same alignment length for the same read)
-- see Python script `filterMappedReads.py`
-
-The output csv file of `filterMappedReads.py`: contig name (read was mapped to), assembly tool, assembly name.
-
-4. get all contigs that are part of MAGs, as well as their quality information (checkM-completeness and checkM-contamination)
+The names of all contigs that are part of MAGs, as well as their checkm quality information (checkM-completeness and checkM-contamination), are stored. 
 - see Shell script `getQualityInformationForMapping.sh`
 
-5. get subset of contigs that are part of MAGs and the filtered list of the read mapping
+The subset of the filtered read mappings and the MAG contigs is computed to get the number of reads mapped to MAGs
 - see Python script `....py`
 
-6. calculate fraction of reads that were mapped to MAGs
+The fraction of read that were mapped to MAGs compared to the total number of reads used for the corresponding assembly was computed.
 
-get total number of reads:
+- get total number of reads of a dataset with the following command:
 ```
-count = $(gunzip -c "<dataset>" | wc -l)
-echo "$((count / 4))"
+echo "$(( $(gunzip -c "<dataset>" | wc -l) / 4))"
 ```
 
 divide number of reads that were mapped to a MAG by the number of total reads
 - see Python script: `....py`
-
-8. plot fraction of reads that were mapped to MAGs
-- see Python script: `....py`
-  - separate mapped reads based on checkM quality information
-
-
 
 </details>
 
