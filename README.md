@@ -398,6 +398,7 @@ The names of all contigs that are part of MAGs, as well as their checkm quality 
 
 The subset of the filtered read mappings and the MAG contigs is computed to get the number of reads mapped to MAGs
 - see Python script `mapping_analysis.py`
+- see Additional Table A1 in Excel file
 
 The fraction of read that were mapped to MAGs compared to the total number of reads used for the corresponding assembly was computed.
 
